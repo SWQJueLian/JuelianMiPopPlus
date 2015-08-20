@@ -7,6 +7,7 @@ import android.preference.Preference;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.util.Log;
 
 import com.juelian.mipop.api.App;
 
@@ -39,7 +40,7 @@ public class PreferenceSettings extends PreferenceActivity {
 	}
 
 	public void onCreate(Bundle bundle) {
-		AppLog.i(TAG, "onCreate()...");
+		Log.i(TAG, "onCreate()...");
 		super.onCreate(bundle);
 		addPreferencesFromResource(R.xml.mipop_settings);
 		mSharedPreferences = getPreferenceManager().getDefaultSharedPreferences(PreferenceSettings.this);
@@ -52,18 +53,18 @@ public class PreferenceSettings extends PreferenceActivity {
 
 	public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
 			Preference preference) {
-		AppLog.i(TAG, "onPreferenceTreeClick");
+		Log.i(TAG, "onPreferenceTreeClick");
 		if (preference == mMiPop) {
-			AppLog.i(TAG, "onPreferenceTreeClick preference == mMiPop");
+			Log.i(TAG, "onPreferenceTreeClick preference == mMiPop");
 			if (mMiPop.isChecked()) {
 				App.showMipop();
 			} else {
 				App.hideMipop();
 			}
 		} else if (preference == mFullScreen) {
-			AppLog.i(TAG, "onPreferenceTreeClick preference == mFullScreen");
+			Log.i(TAG, "onPreferenceTreeClick preference == mFullScreen");
 			if (mFullScreen.isChecked()) {
-				AppLog.i(TAG, "mFullScreen checked mipop = true");
+				Log.i(TAG, "mFullScreen checked mipop = true");
 				mMiPop.setChecked(true);
 				mMiPop.setEnabled(false);
 				App.showMipop();
@@ -75,11 +76,22 @@ public class PreferenceSettings extends PreferenceActivity {
 
 	}
 
+	@Override
 	protected void onResume() {
 		super.onResume();
-		AppLog.i(TAG, "onResume()...");
+		Log.i(TAG, "onResume()...");
 		setupFloatIcon();
 		setupFullScreen();
+	}
+	
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		Log.i(TAG, "ondestory-->");
+		this.mMiPop = null;
+		this.mFullScreen = null;
+		this.mSharedPreferences = null;
 	}
 
 }

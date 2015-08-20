@@ -1,10 +1,10 @@
 package com.juelian.mipop.widget;
 
-import com.juelian.mipop.AppLog;
-import com.juelian.mipop.R;
-
 import android.app.Instrumentation;
 import android.content.Context;
+import android.util.Log;
+
+import com.juelian.mipop.R;
 
 public class MeterMenu extends MeterBase {
 	public static final String NAME = MeterMenu.class.getSimpleName();
@@ -18,22 +18,22 @@ public class MeterMenu extends MeterBase {
 	}
 
 	public void Click() {
-		AppLog.i("way", "menu click");
+		Log.i("way", "menu click");
 		playSoundEffect(0);
 		new Thread() {
 			public void run() {
 				try {
 					new Instrumentation().sendKeyDownUpSync(82);
-					AppLog.i("shenzhan", "MENU implement");
+					Log.i("shenzhan", "MENU implement");
 					return;
 				} catch (Exception e) {
-					AppLog.d("HouJiong", e.toString());
+					Log.d("HouJiong", e.toString());
 				}
 			}
 		}.start();
 	}
 
 	public void LongClick() {
-		AppLog.i("way", "menu  long click");
+		Log.i("way", "menu  long click");
 	}
 }

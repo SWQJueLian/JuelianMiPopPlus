@@ -3,9 +3,9 @@ package com.juelian.mipop.widget;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.util.Log;
 import android.view.MotionEvent;
 
-import com.juelian.mipop.AppLog;
 import com.juelian.mipop.R;
 import com.juelian.mipop.animation.AnimationParking;
 
@@ -26,22 +26,22 @@ public class MeterBack extends MeterBase {
 	}
 
 	public void Click() {
-		AppLog.i("way", "back click");
+		Log.i("way", "back click");
 		playSoundEffect(0);
 		new Thread() {
 			public void run() {
 				try {
 					new Instrumentation().sendKeyDownUpSync(4);
-					AppLog.i("shenzhan", "Back implement");
+					Log.i("shenzhan", "Back implement");
 				} catch (Exception e) {
-					AppLog.d("shenzhan", e.toString());
+					Log.d("shenzhan", e.toString());
 				}
 			}
 		}.start();
 	}
 
 	public void LongClick() {
-		AppLog.i("way", "back  long click");
+		Log.i("way", "back  long click");
 	}
 
 	protected void onConfigurationChanged(Configuration configuration) {
@@ -59,14 +59,14 @@ public class MeterBack extends MeterBase {
 		//	return super.onTouchEvent(event);
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
-			AppLog.i("OUT", "back ACTION_DOWN" + this.hasMoved);
+			Log.i("OUT", "back ACTION_DOWN" + this.hasMoved);
 			this.changeX = rawX;
 			this.changeY = rawY;
 			this.mTouchStartX = rawX;
 			this.mTouchStartY = rawY;
 			break;
 		case MotionEvent.ACTION_MOVE:
-			AppLog.i("OUT", "back ACTION_OUTSIDE");
+			Log.i("OUT", "back ACTION_OUTSIDE");
 			int offsetX = rawX - changeX;
 			int offsetY = rawY - changeY;
 			if ((Math.abs(offsetX) > 3) || (Math.abs(offsetY) > 3)) {
@@ -81,7 +81,7 @@ public class MeterBack extends MeterBase {
 			break;
 
 		case MotionEvent.ACTION_UP:
-			AppLog.i("Suhao.Click", "MeterBacd.UP, MOVE_MAX_SIZE/baseX= "
+			Log.i("Suhao.Click", "MeterBacd.UP, MOVE_MAX_SIZE/baseX= "
 					+ Until.MOVE_MAX_SIZE + " / " + baseX);
 			if (!this.hasMoved) {
 			}

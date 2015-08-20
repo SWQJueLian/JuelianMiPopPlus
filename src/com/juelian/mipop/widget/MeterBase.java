@@ -7,13 +7,13 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.os.Handler;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
 
-import com.juelian.mipop.AppLog;
 import com.juelian.mipop.animation.AnimationParking;
 
 public abstract class MeterBase extends ImageView {
@@ -74,7 +74,7 @@ public abstract class MeterBase extends ImageView {
 	public boolean onTouchEvent(MotionEvent event) {
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
-			AppLog.i("OUT", "base DOWN" + hasMoved);
+			Log.i("OUT", "base DOWN" + hasMoved);
 			setImageResource(resIdPressed);
 			handler4LongClick.postDelayed(runnable4LongClick, mTime4LongClick);
 			AnimationParking.stop();
@@ -82,19 +82,19 @@ public abstract class MeterBase extends ImageView {
 		case MotionEvent.ACTION_MOVE:
 			return true;
 		case MotionEvent.ACTION_UP:
-			AppLog.i("OUT", "base UP" + this.hasMoved);
+			Log.i("OUT", "base UP" + this.hasMoved);
 			setImageResource(resId);
 			this.handler4LongClick.removeCallbacks(runnable4LongClick);
 			if (!hasMoved) {
 				if (!isLongClick) {
-					AppLog.i("Suhao.Click", "MeterBase.UP, Click");
+					Log.i("Suhao.Click", "MeterBase.UP, Click");
 					Click();
 				}
 			}
 			if(isLongClick){
-				AppLog.i("Suhao.Click", "MeterBase.UP, Long click");
+				Log.i("Suhao.Click", "MeterBase.UP, Long click");
 			}else if(hasMoved){
-				AppLog.i("Suhao.Click", "MeterBase.UP, has moved");
+				Log.i("Suhao.Click", "MeterBase.UP, has moved");
 			}
 			
 	        hasMoved = false;
@@ -105,7 +105,7 @@ public abstract class MeterBase extends ImageView {
 		default:
 			break;
 		}
-		AppLog.i("OUT", "base ACTION_OUTSIDE" + this.hasMoved);
+		Log.i("OUT", "base ACTION_OUTSIDE" + this.hasMoved);
 		AnimationParking.shrinkStart();
 		return true;
         /*for (;;)

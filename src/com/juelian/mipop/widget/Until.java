@@ -2,9 +2,9 @@ package com.juelian.mipop.widget;
 
 import android.content.Context;
 import android.util.DisplayMetrics;
+import android.util.Log;
 import android.view.WindowManager;
 
-import com.juelian.mipop.AppLog;
 import com.juelian.mipop.R;
 
 public class Until {
@@ -56,7 +56,7 @@ public class Until {
 			int i = Integer.parseInt(clasz.getField("status_bar_height")
 					.get(object).toString());
 			STATUS_HEIGHT = context.getResources().getDimensionPixelSize(i);
-			AppLog.i("way", "StatusBarHeight = " + STATUS_HEIGHT);
+			Log.i("way", "StatusBarHeight = " + STATUS_HEIGHT);
 		} catch (Exception e) {
 			STATUS_HEIGHT = context.getResources().getDimensionPixelSize(
 					R.dimen.status_bar_height);

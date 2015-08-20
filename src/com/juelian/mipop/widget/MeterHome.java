@@ -1,10 +1,10 @@
 package com.juelian.mipop.widget;
 
-import com.juelian.mipop.AppLog;
-import com.juelian.mipop.R;
-
 import android.app.Instrumentation;
 import android.content.Context;
+import android.util.Log;
+
+import com.juelian.mipop.R;
 
 public class MeterHome extends MeterBase {
 	public static final String NAME = MeterHome.class.getSimpleName();
@@ -18,22 +18,22 @@ public class MeterHome extends MeterBase {
 	}
 
 	public void Click() {
-		AppLog.i("way", "home   click");
+		Log.i("way", "home   click");
 		playSoundEffect(0);
 		new Thread() {
 			public void run() {
 				try {
 					new Instrumentation().sendKeyDownUpSync(3);
-					AppLog.i("shenzhan", "Home implement");
+					Log.i("shenzhan", "Home implement");
 					return;
 				} catch (Exception e) {
-					AppLog.d("shenzhan", e.toString());
+					Log.d("shenzhan", e.toString());
 				}
 			}
 		}.start();
 	}
 
 	public void LongClick() {
-		AppLog.i("way", "home  long click");
+		Log.i("way", "home  long click");
 	}
 }
