@@ -1,0 +1,39 @@
+package com.juelian.mipop.widget;
+
+import com.juelian.mipop.AppLog;
+import com.juelian.mipop.R;
+
+import android.app.Instrumentation;
+import android.content.Context;
+
+public class MeterHome extends MeterBase {
+	public static final String NAME = MeterHome.class.getSimpleName();
+
+	public MeterHome(Context context) {
+		super(context);
+		Register(NAME, this);
+		setSoundEffectsEnabled(true);
+		setImageResource(R.drawable.home_selector);
+		setResId(R.drawable.home, R.drawable.home_pressed);
+	}
+
+	public void Click() {
+		AppLog.i("way", "home   click");
+		playSoundEffect(0);
+		new Thread() {
+			public void run() {
+				try {
+					new Instrumentation().sendKeyDownUpSync(3);
+					AppLog.i("shenzhan", "Home implement");
+					return;
+				} catch (Exception e) {
+					AppLog.d("shenzhan", e.toString());
+				}
+			}
+		}.start();
+	}
+
+	public void LongClick() {
+		AppLog.i("way", "home  long click");
+	}
+}
