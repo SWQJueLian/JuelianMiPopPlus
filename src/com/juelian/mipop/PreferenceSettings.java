@@ -12,7 +12,7 @@ import com.juelian.mipop.api.App;
 
 @SuppressWarnings("deprecation")
 public class PreferenceSettings extends PreferenceActivity {
-	private String TAG = "MainActivity";
+	private String TAG = "Mipop-PreferenceSettings";
 	private CheckBoxPreference mFullScreen;
 	private CheckBoxPreference mMiPop;
 	private SharedPreferences mSharedPreferences;
