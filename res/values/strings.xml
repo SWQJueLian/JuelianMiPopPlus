@@ -6,5 +6,6 @@
     <string name="mipop_switch_summary">Mi-POP enabled，the navigation bar could be replaced</string>
     <string name="mipop_fullscreen_title">Hide the navigation bar</string>
     <string name="mipop_fullscreen_summary">Larger screen area available</string>
+    <string name="mipop_firstkey">FirstKey</string>
 
 </resources>

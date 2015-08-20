@@ -16,7 +16,7 @@ public class MeterRecent extends MeterBase {
 		Register(NAME, this);
 		setSoundEffectsEnabled(true);
 		setImageResource(R.drawable.recent_selector);
-		setResId(R.drawable.recent, R.drawable.recent_pressed);
+		setResId(R.mipmap.recent, R.mipmap.recent_pressed);
 	}
 
 	public void Click() {

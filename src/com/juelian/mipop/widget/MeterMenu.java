@@ -14,7 +14,7 @@ public class MeterMenu extends MeterBase {
 		Register(NAME, this);
 		setSoundEffectsEnabled(true);
 		setImageResource(R.drawable.menu_selector);
-		setResId(R.drawable.menu, R.drawable.menu_pressed);
+		setResId(R.mipmap.menu, R.mipmap.menu_pressed);
 	}
 
 	public void Click() {

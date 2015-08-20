@@ -3,6 +3,7 @@ package com.juelian.mipop.widget;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.util.Log;
+import android.view.KeyEvent;
 
 import com.juelian.mipop.R;
 
@@ -13,8 +14,8 @@ public class MeterHome extends MeterBase {
 		super(context);
 		Register(NAME, this);
 		setSoundEffectsEnabled(true);
-		setImageResource(R.drawable.home_selector);
-		setResId(R.drawable.home, R.drawable.home_pressed);
+		//setImageResource(R.drawable.home_selector);
+		//setResId(R.mipmap.home, R.mipmap.home_pressed);
 	}
 
 	public void Click() {
@@ -23,9 +24,13 @@ public class MeterHome extends MeterBase {
 		new Thread() {
 			public void run() {
 				try {
-					new Instrumentation().sendKeyDownUpSync(3);
-					Log.i("shenzhan", "Home implement");
-					return;
+					Instrumentation instrumentation = new Instrumentation();
+					int keyCode = MeterHome.this.getKeyCode();
+					if (keyCode==0) {
+						instrumentation.sendKeyDownUpSync(KeyEvent.KEYCODE_HOME);						
+					}else if(keyCode==1) {
+						instrumentation.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+					}
 				} catch (Exception e) {
 					Log.d("shenzhan", e.toString());
 				}

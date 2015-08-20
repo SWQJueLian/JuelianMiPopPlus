@@ -3,6 +3,7 @@ package com.juelian.mipop.widget;
 import java.util.HashMap;
 import java.util.Map;
 
+import android.R.integer;
 import android.content.Context;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
@@ -17,6 +18,7 @@ import android.widget.ImageView;
 import com.juelian.mipop.animation.AnimationParking;
 
 public abstract class MeterBase extends ImageView {
+	private int mKeyCode;
 	public static Map<String, MeterBase> MeterMap = new HashMap<String, MeterBase>();
 	public static int baseX = 0;
 	public static int baseY = Until.SCREEM_HEIGHT / 2;
@@ -150,5 +152,13 @@ public abstract class MeterBase extends ImageView {
 		wmParams.x = x;
 		wmParams.y = y;
 		mWindowManager.updateViewLayout(this, wmParams);
+	}
+	
+	public int getKeyCode() {
+		return mKeyCode;
+	}
+
+	public void setKeyCode(int mKeyCode) {
+		this.mKeyCode = mKeyCode;
 	}
 }

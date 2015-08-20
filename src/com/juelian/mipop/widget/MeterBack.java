@@ -4,6 +4,7 @@ import android.app.Instrumentation;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.MotionEvent;
 
 import com.juelian.mipop.R;
@@ -21,8 +22,8 @@ public class MeterBack extends MeterBase {
 		super(context);
 		Register(NAME, this);
 		setSoundEffectsEnabled(true);
-		setImageResource(R.drawable.back_selector);
-		setResId(R.drawable.back, R.drawable.back_pressed);
+		//setImageResource(R.drawable.back_selector);
+		//setResId(R.mipmap.back, R.mipmap.back_pressed);
 	}
 
 	public void Click() {
@@ -31,7 +32,13 @@ public class MeterBack extends MeterBase {
 		new Thread() {
 			public void run() {
 				try {
-					new Instrumentation().sendKeyDownUpSync(4);
+					Instrumentation instrumentation = new Instrumentation();
+					int keyCode = MeterBack.this.getKeyCode();
+					if (keyCode==0) {
+						instrumentation.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);						
+					}else if(keyCode==1){
+						instrumentation.sendKeyDownUpSync(KeyEvent.KEYCODE_HOME);
+					}
 					Log.i("shenzhan", "Back implement");
 				} catch (Exception e) {
 					Log.d("shenzhan", e.toString());
