@@ -17,8 +17,12 @@ public class PreferenceSettings extends PreferenceActivity {
 	private CheckBoxPreference mMiPop;
 	private SharedPreferences mSharedPreferences;
 
+	/* KEY */
+	public static final String KEY_SWITCH_STRING = "mipop_switch";
+	public static final String KEY_FULLSCREEN_STRING = "mipop_fullscreen";
+	
 	private void setupFloatIcon() {
-		boolean isMipopShow = mSharedPreferences.getBoolean("mipop_switch", true);
+		boolean isMipopShow = mSharedPreferences.getBoolean(KEY_SWITCH_STRING, true);
 		mMiPop.setChecked(isMipopShow);
 		if (mFullScreen.isChecked()){
 			mMiPop.setEnabled(false);
@@ -26,8 +30,6 @@ public class PreferenceSettings extends PreferenceActivity {
 	}
 
 	private void setupFullScreen() {
-		boolean isEnable = mSharedPreferences.getBoolean("mipop_fullscreen", false);
-		mFullScreen.setEnabled(isEnable);
 		String str = Settings.System.getString(getContentResolver(),"showNavigationBar");
 		if ("show".equals(str)) {
 			mFullScreen.setChecked(false);
@@ -41,8 +43,11 @@ public class PreferenceSettings extends PreferenceActivity {
 		super.onCreate(bundle);
 		addPreferencesFromResource(R.xml.mipop_settings);
 		mSharedPreferences = getPreferenceManager().getDefaultSharedPreferences(PreferenceSettings.this);
-		mMiPop = ((CheckBoxPreference) findPreference("mipop_switch"));
-		mFullScreen = ((CheckBoxPreference) findPreference("mipop_fullscreen"));
+		mMiPop = ((CheckBoxPreference) findPreference(KEY_SWITCH_STRING));
+		mFullScreen = ((CheckBoxPreference) findPreference(KEY_FULLSCREEN_STRING));
+		if (!mSharedPreferences.getBoolean(KEY_FULLSCREEN_STRING, false)) {
+			getPreferenceScreen().removePreference(findPreference(KEY_FULLSCREEN_STRING));			
+		}
 	}
 
 	public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
