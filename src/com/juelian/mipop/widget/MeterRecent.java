@@ -27,13 +27,13 @@ public class MeterRecent extends MeterBase {
 				IStatusBarService iStatusBarService = IStatusBarService.Stub
 						.asInterface(ServiceManager.getService("statusbar"));
 				if (iStatusBarService != null) {
-				}
-				try {
-					iStatusBarService.topAppWindowChanged(false);
-					iStatusBarService.toggleRecentApps();
-					return;
-				} catch (RemoteException e) {
-					Log.i("Input", "DeadOjbectException");
+					try {
+						iStatusBarService.topAppWindowChanged(false);
+						iStatusBarService.toggleRecentApps();
+						return;
+					} catch (RemoteException e) {
+						Log.i("Input", "DeadOjbectException");
+					}
 				}
 			}
 		}.start();

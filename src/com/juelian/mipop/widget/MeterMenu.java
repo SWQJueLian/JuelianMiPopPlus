@@ -3,6 +3,7 @@ package com.juelian.mipop.widget;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.util.Log;
+import android.view.KeyEvent;
 
 import com.juelian.mipop.R;
 
@@ -23,7 +24,7 @@ public class MeterMenu extends MeterBase {
 		new Thread() {
 			public void run() {
 				try {
-					new Instrumentation().sendKeyDownUpSync(82);
+					new Instrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_MENU);
 					Log.i("shenzhan", "MENU implement");
 					return;
 				} catch (Exception e) {

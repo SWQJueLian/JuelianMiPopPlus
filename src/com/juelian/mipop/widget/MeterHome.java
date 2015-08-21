@@ -31,6 +31,7 @@ public class MeterHome extends MeterBase {
 					}else if(keyCode==1) {
 						instrumentation.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
 					}
+					return;
 				} catch (Exception e) {
 					Log.d("shenzhan", e.toString());
 				}

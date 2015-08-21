@@ -40,6 +40,7 @@ public class MeterBack extends MeterBase {
 						instrumentation.sendKeyDownUpSync(KeyEvent.KEYCODE_HOME);
 					}
 					Log.i("shenzhan", "Back implement");
+					return;
 				} catch (Exception e) {
 					Log.d("shenzhan", e.toString());
 				}
