@@ -41,10 +41,11 @@ public class App extends Application {
 
 	public static void showMipop() {
 		AnimationParking.stop();
-		//默认出现按钮的位置，左或右边
+		/*
 		AnimationParking.mOriginSide = AnimationParking.LEFT;
 		AnimationParking.baseX = -1;
 		AnimationParking.updateAll(-1, MeterBack.baseY);
+		*/
 		MeterBase.MeterMap.get(MeterBack.NAME).setVisibility(View.VISIBLE);
 		MeterBase.MeterMap.get(MeterHome.NAME).setVisibility(View.GONE);
 		MeterBase.MeterMap.get(MeterRecent.NAME).setVisibility(View.GONE);

@@ -8,6 +8,7 @@ import android.content.Context;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
 import android.os.Handler;
+import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
@@ -25,6 +26,7 @@ public abstract class MeterBase extends ImageView {
 	public static int mLeftMargin = 0;
 	public static boolean mTouchDown = false;
 	public static Paint paint = new Paint();
+	public static Context mContext;
 	private Handler handler4LongClick = new Handler();
 	private boolean hasMoved = false;
 	public boolean isLongClick = false;
@@ -38,10 +40,29 @@ public abstract class MeterBase extends ImageView {
 			LongClick();
 		}
 	};
+	private Handler mHandlerPosXY = new Handler();
+	private Runnable mMemoryXY = new Runnable() {
+		public void run() {
+			if (!AnimationParking.mOriginSide) {
+				Settings.System.putInt(MeterBase.mContext.getContentResolver(),
+						"MipopPosX", Until.SCREEM_WIDTH - Until.IMAGE_WIDTH);
+			}else {
+				Settings.System.putInt(MeterBase.mContext.getContentResolver(),
+						"MipopPosX", 0x0);
+			}
+			Settings.System.putInt(MeterBase.mContext.getContentResolver(),
+					"MipopPosY", AnimationParking.baseY);
+		}
+	};
 	public WindowManager.LayoutParams wmParams = new WindowManager.LayoutParams();
 
 	public MeterBase(Context context) {
 		super(context);
+		mContext = context;
+        int mipopPosX = Settings.System.getInt(mContext.getContentResolver(), "MipopPosX", 0x0);
+        int mipopPosY = Settings.System.getInt(mContext.getContentResolver(), "MipopPosY", (Until.SCREEM_HEIGHT / 2));
+        baseX = mipopPosX;
+        baseY = mipopPosY;
 		this.mWindowManager = ((WindowManager) context.getApplicationContext()
 				.getSystemService(Context.WINDOW_SERVICE));
 		this.wmParams.type = LayoutParams.TYPE_SYSTEM_ALERT;
@@ -101,6 +122,8 @@ public abstract class MeterBase extends ImageView {
 			
 	        hasMoved = false;
 	        isLongClick = false;
+	        mHandlerPosXY.removeCallbacks(mMemoryXY);
+	        mHandlerPosXY.postDelayed(mMemoryXY, 1000L);
             AnimationParking.start();
             return true;
 
