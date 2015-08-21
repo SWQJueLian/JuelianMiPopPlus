@@ -59,12 +59,9 @@ public abstract class MeterBase extends ImageView {
 	public MeterBase(Context context) {
 		super(context);
 		mContext = context;
-        int mipopPosX = Settings.System.getInt(mContext.getContentResolver(), "MipopPosX", 0x0);
-        int mipopPosY = Settings.System.getInt(mContext.getContentResolver(), "MipopPosY", (Until.SCREEM_HEIGHT / 2));
-        baseX = mipopPosX;
-        baseY = mipopPosY;
-		this.mWindowManager = ((WindowManager) context.getApplicationContext()
-				.getSystemService(Context.WINDOW_SERVICE));
+		baseX = Settings.System.getInt(mContext.getContentResolver(),"MipopPosX", 0x0);
+		baseY = Settings.System.getInt(mContext.getContentResolver(),"MipopPosY", (Until.SCREEM_HEIGHT / 2));
+		this.mWindowManager = ((WindowManager) context.getApplicationContext().getSystemService(Context.WINDOW_SERVICE));
 		this.wmParams.type = LayoutParams.TYPE_SYSTEM_ALERT;
 		this.wmParams.format = PixelFormat.TRANSPARENT;
 		wmParams.flags = LayoutParams.FLAG_NOT_FOCUSABLE | LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
