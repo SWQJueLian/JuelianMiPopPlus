@@ -57,6 +57,7 @@ public class Until {
 					.get(object).toString());
 			STATUS_HEIGHT = context.getResources().getDimensionPixelSize(i);
 			Log.i("way", "StatusBarHeight = " + STATUS_HEIGHT);
+			return;
 		} catch (Exception e) {
 			STATUS_HEIGHT = context.getResources().getDimensionPixelSize(
 					R.dimen.status_bar_height);
