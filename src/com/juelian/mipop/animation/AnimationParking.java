@@ -206,6 +206,7 @@ public class AnimationParking {
 	}
 
 	public static void shrinkStart() {
+		isLand = false;
 		handler4Parking.removeCallbacks(runnable4Parking);
 		handler4Shrink.postDelayed(runnable4Shrink, mAutoUpdatePeriod);
 	}
@@ -411,10 +412,10 @@ public class AnimationParking {
 				if (isLand) {
 					baseY = y;
 					updateAll(x,y);
-				}else {
-					baseY = offsetY;
-					updateAll(x,offsetY);							
+					return;
 				}
+				baseY = offsetY;
+				updateAll(x,offsetY);							
 			}
 		}
 	}
