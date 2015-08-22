@@ -11,7 +11,7 @@ import com.juelian.mipop.widget.MeterRecent;
 
 public class AnimationTransparent {
 	private static int currentAlpha = 255;
-	private static int endAlpha = 100;
+	private static int endAlpha = 155;
 	private static int startAlpha = 255;
 	private static long time4Trans = 2000L;
 	private static Handler handler4Transparent = new Handler();
@@ -34,7 +34,7 @@ public class AnimationTransparent {
 	public static void stop() {
 		currentAlpha = startAlpha;
 		handler4Transparent.removeCallbacks(runnable4Transparent);
-		MeterBase.MeterMap.get(MeterBack.NAME).setAlpha(startAlpha / 255.0f);
+		MeterBase.MeterMap.get(MeterBack.NAME).setAlpha(startAlpha);
 		MeterBase.MeterMap.get(MeterHome.NAME).setVisibility(View.VISIBLE);
 		MeterBase.MeterMap.get(MeterMenu.NAME).setVisibility(View.VISIBLE);
 		MeterBase.MeterMap.get(MeterRecent.NAME).setVisibility(View.VISIBLE);
@@ -42,11 +42,11 @@ public class AnimationTransparent {
 
 	private static void transparenting() {
 		if (currentAlpha <= endAlpha) {
+			handler4Transparent.removeCallbacks(runnable4Transparent);
 			return;
 		}
 		currentAlpha = currentAlpha - 1;
-		MeterBase.MeterMap.get(MeterBack.NAME).setAlpha(currentAlpha / 255.0f);
-		periodTime = (int) (time4Trans / Math.abs(startAlpha - endAlpha));
+		MeterBase.MeterMap.get(MeterBack.NAME).setAlpha(currentAlpha);
 		handler4Transparent.postDelayed(runnable4Transparent, periodTime);
 	}
 }

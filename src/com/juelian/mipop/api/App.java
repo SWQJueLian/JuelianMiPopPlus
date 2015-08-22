@@ -50,7 +50,7 @@ public class App extends Application {
 		MeterBase.MeterMap.get(MeterHome.NAME).setVisibility(View.GONE);
 		MeterBase.MeterMap.get(MeterRecent.NAME).setVisibility(View.GONE);
 		MeterBase.MeterMap.get(MeterMenu.NAME).setVisibility(View.GONE);
-		MeterBase.MeterMap.get(MeterBack.NAME).setAlpha(0.4f);
+		//MeterBase.MeterMap.get(MeterBack.NAME).setAlpha(0.4f);
 		AnimationParking.shrinkStart();
 	}
 
