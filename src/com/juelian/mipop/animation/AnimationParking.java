@@ -402,10 +402,10 @@ public class AnimationParking {
 			if (x <= Until.SCREEM_WIDTH - Until.PARKING_LINE
 					&& x > Until.MID_LINE) {
 				Log.i("Bottom", "RIGHT");
-				int offsetY = Until.BOTTOM_LINE;
+				//int offsetY = Until.BOTTOM_LINE;
 				baseX = x;
-				baseY = offsetY;
-				updateAll(x, offsetY);
+				baseY = y;
+				updateAll(x, y);
 			}
 		}
 	}
