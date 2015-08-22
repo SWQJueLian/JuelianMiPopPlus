@@ -17,13 +17,13 @@ import com.juelian.mipop.widget.MeterMenu;
 import com.juelian.mipop.widget.MeterRecent;
 import com.juelian.mipop.widget.Until;
 
-public class App extends Application {
+public class MiPopApplication extends Application {
 	
 	  private ContentObserver mFirstKeyObserver = new ContentObserver(new Handler())
 	  {
 	    public void onChange(boolean paramAnonymousBoolean)
 	    {
-	      App.this.switchFirstKey();
+	      MiPopApplication.this.switchFirstKey();
 	      /*
 	      if (Settings.System.getInt(App.this.getApplicationContext().getContentResolver(), "MIPOP", App.this.getApplicationContext().getResources().getInteger(2131165184)) == 1) {
 	    	  App.this.showMipop();

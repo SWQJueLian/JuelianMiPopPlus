@@ -11,7 +11,7 @@ import android.preference.PreferenceScreen;
 import android.provider.Settings;
 import android.util.Log;
 
-import com.juelian.mipop.api.App;
+import com.juelian.mipop.api.MiPopApplication;
 
 @SuppressWarnings("deprecation")
 public class PreferenceSettings extends PreferenceActivity implements OnPreferenceChangeListener {
@@ -47,9 +47,9 @@ public class PreferenceSettings extends PreferenceActivity implements OnPreferen
 		if (preference == mMiPop) {
 			Log.i(TAG, "onPreferenceTreeClick preference == mMiPop");
 			if (mMiPop.isChecked()) {
-				App.showMipop();
+				MiPopApplication.showMipop();
 			} else {
-				App.hideMipop();
+				MiPopApplication.hideMipop();
 			}
 		} else if (preference == mFullScreen) {
 			Log.i(TAG, "onPreferenceTreeClick preference == mFullScreen");
@@ -57,7 +57,7 @@ public class PreferenceSettings extends PreferenceActivity implements OnPreferen
 				Log.i(TAG, "mFullScreen checked mipop = true");
 				mMiPop.setChecked(true);
 				mMiPop.setEnabled(false);
-				App.showMipop();
+				MiPopApplication.showMipop();
 			} else {
 				mMiPop.setEnabled(true);
 			}
