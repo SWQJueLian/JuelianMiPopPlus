@@ -34,6 +34,7 @@ public class AnimationParking {
 	private static int menuY;
 	private static int recentX;
 	private static int recentY;
+	public static boolean isLand = false;
 	private static Runnable runnable4Parking = new Runnable() {
 
 		@Override
@@ -80,11 +81,13 @@ public class AnimationParking {
 
 	public static void land() {
 		if (!mOriginSide) {
+			Log.d("mijl", "mOriginSide"+mOriginSide);
 			stop();
 			baseX = Until.SCREEM_WIDTH - Until.IMAGE_WIDTH;
 			updateAll(baseX, baseY);
 		}
 		if (MeterBase.baseY > Until.SCREEM_HEIGHT) {
+			isLand = true;
 			updateBottom(baseX, baseY);
 		}
 		shrinkStart();
@@ -402,10 +405,16 @@ public class AnimationParking {
 			if (x <= Until.SCREEM_WIDTH - Until.PARKING_LINE
 					&& x > Until.MID_LINE) {
 				Log.i("Bottom", "RIGHT");
-				//int offsetY = Until.BOTTOM_LINE;
+				int offsetY = Until.BOTTOM_LINE;
+				Log.i("juelian", "y: " +y+" === offsetY: "+offsetY);
 				baseX = x;
-				baseY = y;
-				updateAll(x, y);
+				if (isLand) {
+					baseY = y;
+					updateAll(x,y);
+				}else {
+					baseY = offsetY;
+					updateAll(x,offsetY);							
+				}
 			}
 		}
 	}
