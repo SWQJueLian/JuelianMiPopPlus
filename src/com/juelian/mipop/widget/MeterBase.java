@@ -3,7 +3,6 @@ package com.juelian.mipop.widget;
 import java.util.HashMap;
 import java.util.Map;
 
-import android.R.integer;
 import android.content.Context;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;

@@ -1,8 +1,6 @@
 package com.juelian.mipop.animation;
 
-import android.R.integer;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 
 import com.juelian.mipop.JueLianUtils;

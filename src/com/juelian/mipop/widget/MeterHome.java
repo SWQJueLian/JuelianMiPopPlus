@@ -5,8 +5,6 @@ import android.content.Context;
 import android.util.Log;
 import android.view.KeyEvent;
 
-import com.juelian.mipop.R;
-
 public class MeterHome extends MeterBase {
 	public static final String NAME = MeterHome.class.getSimpleName();
 

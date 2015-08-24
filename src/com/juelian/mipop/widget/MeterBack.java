@@ -7,7 +7,6 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
-import com.juelian.mipop.R;
 import com.juelian.mipop.animation.AnimationParking;
 
 public class MeterBack extends MeterBase {
