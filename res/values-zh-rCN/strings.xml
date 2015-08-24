@@ -8,4 +8,9 @@
     <string name="mipop_fullscreen_title">隐藏底部导航条</string>
     <string name="mipop_fullscreen_summary">隐藏底部导航条，扩大屏幕使用范围</string>
     <string name="mipop_firstkey">默认键</string>
+    <string name="mipop_button_alpha_title">Mipop按钮不透明度</string>
+    <string name="mipop_button_alpha_dialog_msg">设置范围：60-255，值越小按钮越透明</string>
+    <string name="alpha_waring_msg">输入的值小于60或大于255!</string>
+    <string name="alpha_summary">不透明度：%1$d, 默认为255.</string>
+    <string name="alpha_null_waring_msg">输入的值不能为空!</string>
 </resources>

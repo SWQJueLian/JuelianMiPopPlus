@@ -101,46 +101,4 @@ public class MeterBack extends MeterBase {
 		return super.onTouchEvent(event);
 
 	}
-    /* boolean bool = true;
-    int i = (int)event.getRawX();
-    int j = -25 + (int)event.getRawY();
-    switch (event.getAction())
-    {
-    }
-    for (;;)
-    {
-        bool = super.onTouchEvent(event);
-        do
-        {
-            return bool;
-            AppLog.i("OUT", "back ACTION_DOWN" + this.hasMoved);
-            mTouchDown = bool;
-            this.changeX = i;
-            this.changeY = j;
-            this.mTouchStartX = i;
-            this.mTouchStartY = j;
-            this.isDown = bool;
-            break;
-            AppLog.i("OUT", "back ACTION_OUTSIDE");
-            break;
-            int k = i - this.changeX;
-            int m = j - this.changeY;
-            if ((Math.abs(k) > 3) || (Math.abs(m) > 3))
-            {
-                AppLog.i("MBack", "baseX/offsetX = " + baseX + "/" + k);
-                baseX = k + baseX;
-                baseY = m + baseY;
-                AnimationParking.updateAll(baseX, baseY);
-                this.changeX = i;
-                this.changeY = j;
-            }
-        } while ((Math.abs(i - this.mTouchStartX) <= Until.MOVE_MAX_SIZE) && (Math.abs(j - this.mTouchStartY) <= Until.MOVE_MAX_SIZE));
-        moved();
-        return bool;
-        AppLog.i("Suhao.Click", "MeterBacd.UP, MOVE_MAX_SIZE/baseX= " + Until.MOVE_MAX_SIZE + " / " + baseX);
-        if (!this.hasMoved) {}
-        mTouchDown = false;
-        this.hasMoved = false;
-        this.isDown = false;
-    }*/
 }

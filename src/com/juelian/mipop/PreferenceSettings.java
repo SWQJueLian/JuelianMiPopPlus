@@ -3,13 +3,17 @@ package com.juelian.mipop;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
+import android.preference.EditTextPreference;
 import android.preference.ListPreference;
 import android.preference.Preference;
 import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.text.InputType;
+import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.juelian.mipop.api.MiPopApplication;
 
@@ -20,16 +24,20 @@ public class PreferenceSettings extends PreferenceActivity implements OnPreferen
 	private CheckBoxPreference mMiPop;
 	private SharedPreferences mSharedPreferences;
 	private ListPreference mFirstKeyListPreference;
+	private EditTextPreference mMiPopButtonAlpha;
 
 	/* KEY */
 	public static final String KEY_SWITCH_STRING = "mipop_switch";
 	public static final String KEY_FULLSCREEN_STRING = "mipop_fullscreen";
 	public static final String KEY_FIRST_KEY_STRING = "firstkey";
-
+	public static final String KEY_ALPHA_STRING = "alpha";
+	private String alphaSummaryFormat;
+	
 	public void onCreate(Bundle bundle) {
 		Log.i(TAG, "onCreate()...");
 		super.onCreate(bundle);
 		addPreferencesFromResource(R.xml.mipop_settings);
+		alphaSummaryFormat =  getResources().getString(R.string.alpha_summary);
 		mSharedPreferences = getPreferenceManager().getDefaultSharedPreferences(PreferenceSettings.this);
 		mFirstKeyListPreference = (ListPreference) findPreference(KEY_FIRST_KEY_STRING);
 		mFirstKeyListPreference.setSummary(mFirstKeyListPreference.getEntries()[Settings.System.getInt(getContentResolver(),"FirstKey", 0)]);
@@ -39,6 +47,13 @@ public class PreferenceSettings extends PreferenceActivity implements OnPreferen
 		if (!mSharedPreferences.getBoolean(KEY_FULLSCREEN_STRING, false)) {
 			getPreferenceScreen().removePreference(findPreference(KEY_FULLSCREEN_STRING));			
 		}
+		
+		mMiPopButtonAlpha = (EditTextPreference) findPreference(KEY_ALPHA_STRING);
+		mMiPopButtonAlpha.getEditText().setInputType(InputType.TYPE_CLASS_NUMBER);
+		mMiPopButtonAlpha.getEditText().setHint(JueLianUtils.getAlpha()+"");
+		mMiPopButtonAlpha.setDialogMessage(R.string.mipop_button_alpha_dialog_msg);
+		mMiPopButtonAlpha.setSummary(String.format(alphaSummaryFormat, JueLianUtils.getAlpha()));
+		mMiPopButtonAlpha.setOnPreferenceChangeListener(this);
 	}
 
 	public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
@@ -74,6 +89,24 @@ public class PreferenceSettings extends PreferenceActivity implements OnPreferen
 			mFirstKeyListPreference.setSummary(mFirstKeyListPreference.getEntries()[index]);
 			Settings.System.putInt(getContentResolver(),"FirstKey", index);
 			return true;
+		}
+		if (preference == mMiPopButtonAlpha) {
+			String valueString = (String)newValue;
+			if (!TextUtils.isEmpty(valueString)) {
+				int index = Integer.parseInt(valueString);
+				if (index < 60 || index > 255) {
+					Toast.makeText(getApplicationContext(), R.string.alpha_waring_msg, 1).show();
+					return false;
+				}else {
+					Settings.System.putInt(getContentResolver(), "juelian_button_alpha", index);
+					String beenFormat = String.format(alphaSummaryFormat, index);
+					mMiPopButtonAlpha.setSummary(beenFormat);
+					return true;
+				}
+			}else {
+				Toast.makeText(getApplicationContext(), R.string.alpha_null_waring_msg, 1).show();
+				return false;
+			}
 		}
 		return false;
 	}

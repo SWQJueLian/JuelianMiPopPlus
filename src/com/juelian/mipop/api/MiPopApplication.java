@@ -18,19 +18,19 @@ import com.juelian.mipop.widget.MeterRecent;
 import com.juelian.mipop.widget.Until;
 
 public class MiPopApplication extends Application {
-	
-	  private ContentObserver mFirstKeyObserver = new ContentObserver(new Handler())
-	  {
-	    public void onChange(boolean paramAnonymousBoolean)
-	    {
-	      MiPopApplication.this.switchFirstKey();
-	      /*
-	      if (Settings.System.getInt(App.this.getApplicationContext().getContentResolver(), "MIPOP", App.this.getApplicationContext().getResources().getInteger(2131165184)) == 1) {
-	    	  App.this.showMipop();
-	      }
-	      */
-	    }
-	  };
+
+	private ContentObserver mFirstKeyObserver = new ContentObserver(new Handler()) {
+		public void onChange(boolean paramAnonymousBoolean) {
+			MiPopApplication.this.switchFirstKey();
+		}
+	};
+
+	private ContentObserver mButtonAlpha = new ContentObserver(new Handler()) {
+		public void onChange(boolean paramAnonymousBoolean) {
+			setAlphas();
+			AnimationTransparent.start();
+		}
+	};
 
 	public static void hideMipop() {
 		MeterBase.MeterMap.get(MeterHome.NAME).setVisibility(View.GONE);
@@ -62,7 +62,9 @@ public class MiPopApplication extends Application {
 		new MeterHome(this);
 		new MeterBack(this);
 		switchFirstKey();
+		setAlphas();
 		getApplicationContext().getContentResolver().registerContentObserver(Settings.System.getUriFor("FirstKey"), false, this.mFirstKeyObserver);
+		getApplicationContext().getContentResolver().registerContentObserver(Settings.System.getUriFor("juelian_button_alpha"), false, this.mButtonAlpha);
 	}
 	
 	private void switchFirstKey(){
@@ -85,4 +87,13 @@ public class MiPopApplication extends Application {
 		}
 	}
 	
+	public void setAlphas() {
+		int i = Settings.System.getInt(getApplicationContext().getContentResolver(), "juelian_button_alpha", 255);
+		((MeterBase) MeterBase.MeterMap.get(MeterBack.NAME)).setAlpha(i);
+		((MeterBase) MeterBase.MeterMap.get(MeterHome.NAME)).setAlpha(i);
+		((MeterBase) MeterBase.MeterMap.get(MeterMenu.NAME)).setAlpha(i);
+		((MeterBase) MeterBase.MeterMap.get(MeterRecent.NAME)).setAlpha(i);
+		Log.i("mijl-->", "mipop button alpha: " + i);
+	}
+
 }

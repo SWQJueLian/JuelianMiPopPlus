@@ -18,5 +18,7 @@
         android:persistent="true"
         android:summary="@string/mipop_fullscreen_summary"
         android:title="@string/mipop_fullscreen_title" />
-
+    <EditTextPreference
+        android:key="alpha"
+        android:title="@string/mipop_button_alpha_title" />
 </PreferenceScreen>
