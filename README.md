@@ -6,3 +6,6 @@
 需要系统签名，需要加载layoutjar库。
 
 本项目在Eclipse下进行开发
+
+android.permission.HARDWARE_TEST在Eclipse下会报错
+将android lint中的protect permission级别改为警告可以忽略
