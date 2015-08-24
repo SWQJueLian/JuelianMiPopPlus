@@ -1,5 +1,6 @@
 package com.juelian.mipop.animation;
 
+import android.R.integer;
 import android.os.Handler;
 import android.util.Log;
 import android.view.View;
@@ -29,9 +30,10 @@ public class AnimationTransparent {
 	public static void start() {
 		customAlpha = JueLianUtils.getAlpha();
 		if (customAlpha!=255) {
+			int subtract= customAlpha-30;
 			currentAlpha = customAlpha;
-			endAlpha = customAlpha-30;
-			periodTime = (int) (time4Trans / Math.abs(customAlpha - customAlpha-30));
+			endAlpha = subtract;
+			periodTime = (int) (time4Trans / Math.abs(customAlpha - subtract));
 			//Log.d("juelian", "run start()"+"currentAlpha:"+currentAlpha+"; endAlpha:"+endAlpha+"; periodTime: "+periodTime);
 		}else {
 			periodTime = (int) (time4Trans / Math.abs(startAlpha - endAlpha));						
