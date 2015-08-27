@@ -7,8 +7,9 @@
     <string name="mipop_fullscreen_summary">Larger screen area available</string>
     <string name="mipop_firstkey">FirstKey</string>
     <string name="mipop_button_alpha_title">Mipop Button Opacity</string>
-    <string name="mipop_button_alpha_dialog_msg">range：60~255, when values small then more transparent</string>
+    <string name="mipop_button_alpha_dialog_msg">range：60~255, when then values smaller then button more transparent</string>
     <string name="alpha_waring_msg">your input values less than 60 or larger then 255!</string>
     <string name="alpha_summary">Opacity：%1$d, Default is:255.</string>
     <string name="alpha_null_waring_msg">cannot input empty values!</string>
+    <string name="advSettings_category_title">AdvSettings</string>
 </resources>

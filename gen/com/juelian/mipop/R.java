@@ -37,6 +37,7 @@ public final class R {
         public static final int recent_pressed=0x7f030008;
     }
     public static final class string {
+        public static final int advSettings_category_title=0x7f07000b;
         public static final int alpha_null_waring_msg=0x7f07000a;
         public static final int alpha_summary=0x7f070009;
         public static final int alpha_waring_msg=0x7f070008;
