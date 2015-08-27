@@ -19,3 +19,5 @@ android.permission.HARDWARE_TEST在Eclipse下会报错
 -->4个按钮透明度调整
 
 -->默认键
+
+![Screenshot 1](https://raw.githubusercontent.com/SWQJueLian/JuelianMiPopPlus/master/screenshot.png "Screenshot 1")
