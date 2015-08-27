@@ -17,4 +17,7 @@
     <string name="mipop_keymenu">菜单键</string>
     <string name="mipop_keyrecl">任务键</string>
     <string name="button_longclick_category_title">按钮长按事件</string>
+    <string name="about_category_title">关于与版权</string>
+    <string name="about_title">作者：绝恋。。</string>
+    <string name="about_summary">版权所有，基于ZTE Mipop,way 开源项目进行功能加强</string>
 </resources>

@@ -47,4 +47,8 @@
     <EditTextPreference
         android:key="alpha"
         android:title="@string/mipop_button_alpha_title" />
+    <PreferenceCategory android:title="@string/about_category_title" />
+    <Preference
+        android:title="@string/about_title"
+        android:summary="@string/about_summary"/>
 </PreferenceScreen>
