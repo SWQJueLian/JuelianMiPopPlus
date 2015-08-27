@@ -12,4 +12,9 @@
     <string name="alpha_summary">Opacity：%1$d, Default is:255.</string>
     <string name="alpha_null_waring_msg">cannot input empty values!</string>
     <string name="advSettings_category_title">AdvSettings</string>
+    <string name="mipop_keyback">Back Button</string>
+    <string name="mipop_keyhome">Home Button</string>
+    <string name="mipop_keymenu">Menu Button</string>
+    <string name="mipop_keyrecl">Task Button</string>
+    <string name="button_longclick_category_title">Button LongClick</string>
 </resources>

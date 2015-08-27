@@ -8,4 +8,44 @@
         <item>Back Key(default)</item>
         <item>Home Key</item>
     </string-array>
+    <string-array name="mi_recl_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="mi_menu_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="mi_home_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="mi_back_values">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="mi_recl_entries">
+        <item>Nothing</item>
+        <item>Lock Screen</item>
+        <item>Kill Current App</item>
+    </string-array>
+    <string-array name="mi_menu_entries">
+        <item>Nothing</item>
+        <item>Lock Screen</item>
+        <item>Kill Current App</item>
+    </string-array>
+    <string-array name="mi_home_entries">
+        <item>Nothing</item>
+        <item>Lock Screen</item>
+        <item>Kill Current App</item>
+    </string-array>
+    <string-array name="mi_back_entries">
+        <item>Nothing</item>
+        <item>Lock Screen</item>
+        <item>Kill Current App</item>
+    </string-array>
 </resources>

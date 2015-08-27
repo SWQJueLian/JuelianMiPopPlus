@@ -4,4 +4,24 @@
         <item>返回键(默认)</item>
         <item>Home键</item>
     </string-array>
+    <string-array name="mi_recl_entries">
+        <item>无动作</item>
+        <item>锁屏</item>
+        <item>停止当前程序</item>
+    </string-array>
+    <string-array name="mi_menu_entries">
+        <item>无动作</item>
+        <item>锁屏</item>
+        <item>停止当前程序</item>
+    </string-array>
+    <string-array name="mi_home_entries">
+        <item>无动作</item>
+        <item>锁屏</item>
+        <item>停止当前程序</item>
+    </string-array>
+    <string-array name="mi_back_entries">
+        <item>无动作</item>
+        <item>锁屏</item>
+        <item>停止当前程序</item>
+    </string-array>
 </resources>

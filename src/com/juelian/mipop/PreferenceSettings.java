@@ -25,12 +25,21 @@ public class PreferenceSettings extends PreferenceActivity implements OnPreferen
 	private SharedPreferences mSharedPreferences;
 	private ListPreference mFirstKeyListPreference;
 	private EditTextPreference mMiPopButtonAlpha;
+	private ListPreference mBackKeyListPreference;
+	private ListPreference mHomeKeyListPreference;
+	private ListPreference mMenuKeyListPreference;
+	private ListPreference mReclKeyListPreference;
 
 	/* KEY */
 	public static final String KEY_SWITCH_STRING = "mipop_switch";
 	public static final String KEY_FULLSCREEN_STRING = "mipop_fullscreen";
 	public static final String KEY_FIRST_KEY_STRING = "firstkey";
 	public static final String KEY_ALPHA_STRING = "alpha";
+	public static final String KEY_BACK_STRING = "backkey";
+	public static final String KEY_HOME_STRING = "homekey";
+	public static final String KEY_MENU_STRING = "menukey";
+	public static final String KEY_RECL_STRING = "reclkey";
+	
 	private String alphaSummaryFormat;
 	
 	public void onCreate(Bundle bundle) {
@@ -54,6 +63,25 @@ public class PreferenceSettings extends PreferenceActivity implements OnPreferen
 		mMiPopButtonAlpha.setDialogMessage(R.string.mipop_button_alpha_dialog_msg);
 		mMiPopButtonAlpha.setSummary(String.format(alphaSummaryFormat, JueLianUtils.getAlpha()));
 		mMiPopButtonAlpha.setOnPreferenceChangeListener(this);
+		
+		mBackKeyListPreference = (ListPreference) findPreference(KEY_BACK_STRING);
+		mBackKeyListPreference.setSummary(mBackKeyListPreference.getEntries()[Settings.System.getInt(getContentResolver(),"mipop_choose_what_back", 0)]);
+		mBackKeyListPreference.setOnPreferenceChangeListener(this);
+		
+		
+		mHomeKeyListPreference = (ListPreference) findPreference(KEY_HOME_STRING);
+		mHomeKeyListPreference.setSummary(mHomeKeyListPreference.getEntries()[Settings.System.getInt(getContentResolver(),"mipop_choose_what_home", 0)]);
+		mHomeKeyListPreference.setOnPreferenceChangeListener(this);
+		
+		mMenuKeyListPreference = (ListPreference) findPreference(KEY_MENU_STRING);
+		mMenuKeyListPreference.setSummary(mMenuKeyListPreference.getEntries()[Settings.System.getInt(getContentResolver(),"mipop_choose_what_menu", 0)]);
+		mMenuKeyListPreference.setOnPreferenceChangeListener(this);
+		
+		
+		mReclKeyListPreference = (ListPreference) findPreference(KEY_RECL_STRING);
+		mReclKeyListPreference.setSummary(mReclKeyListPreference.getEntries()[Settings.System.getInt(getContentResolver(),"mipop_choose_what_recl", 0)]);
+		mReclKeyListPreference.setOnPreferenceChangeListener(this);
+		
 	}
 
 	public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
@@ -107,6 +135,33 @@ public class PreferenceSettings extends PreferenceActivity implements OnPreferen
 				Toast.makeText(getApplicationContext(), R.string.alpha_null_waring_msg, 1).show();
 				return false;
 			}
+		}
+		if (preference == mBackKeyListPreference) {
+			int index = mBackKeyListPreference.findIndexOfValue((String) newValue);
+			mBackKeyListPreference.setSummary(mBackKeyListPreference.getEntries()[index]);
+			Settings.System.putInt(getContentResolver(),"mipop_choose_what_back", index);
+			return true;
+		}
+		
+		if (preference == mHomeKeyListPreference) {
+			int index = mHomeKeyListPreference.findIndexOfValue((String) newValue);
+			mHomeKeyListPreference.setSummary(mHomeKeyListPreference.getEntries()[index]);
+			Settings.System.putInt(getContentResolver(),"mipop_choose_what_home", index);
+			return true;
+		}
+		
+		if (preference == mMenuKeyListPreference) {
+			int index = mMenuKeyListPreference.findIndexOfValue((String) newValue);
+			mMenuKeyListPreference.setSummary(mMenuKeyListPreference.getEntries()[index]);
+			Settings.System.putInt(getContentResolver(),"mipop_choose_what_menu", index);
+			return true;
+		}
+		
+		if (preference == mReclKeyListPreference) {
+			int index = mReclKeyListPreference.findIndexOfValue((String) newValue);
+			mReclKeyListPreference.setSummary(mReclKeyListPreference.getEntries()[index]);
+			Settings.System.putInt(getContentResolver(),"mipop_choose_what_recl", index);
+			return true;
 		}
 		return false;
 	}

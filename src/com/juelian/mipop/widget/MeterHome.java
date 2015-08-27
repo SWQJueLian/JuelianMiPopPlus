@@ -1,5 +1,7 @@
 package com.juelian.mipop.widget;
 
+import com.juelian.mipop.JueLianUtils;
+
 import android.app.Instrumentation;
 import android.content.Context;
 import android.util.Log;
@@ -38,6 +40,7 @@ public class MeterHome extends MeterBase {
 	}
 
 	public void LongClick() {
-		Log.i("way", "home  long click");
+		Log.i("juelian", "home long click");
+		JueLianUtils.switchFunction2();
 	}
 }

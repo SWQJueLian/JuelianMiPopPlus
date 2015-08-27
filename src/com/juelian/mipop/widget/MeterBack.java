@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.view.MotionEvent;
 
+import com.juelian.mipop.JueLianUtils;
 import com.juelian.mipop.animation.AnimationParking;
 
 public class MeterBack extends MeterBase {
@@ -48,7 +49,8 @@ public class MeterBack extends MeterBase {
 	}
 
 	public void LongClick() {
-		Log.i("way", "back  long click");
+		Log.i("juelian", "back  long click");
+		JueLianUtils.switchFunction();
 	}
 
 	protected void onConfigurationChanged(Configuration configuration) {

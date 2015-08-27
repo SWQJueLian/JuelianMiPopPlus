@@ -5,6 +5,7 @@ import android.content.Context;
 import android.util.Log;
 import android.view.KeyEvent;
 
+import com.juelian.mipop.JueLianUtils;
 import com.juelian.mipop.R;
 
 public class MeterMenu extends MeterBase {
@@ -35,6 +36,7 @@ public class MeterMenu extends MeterBase {
 	}
 
 	public void LongClick() {
-		Log.i("way", "menu  long click");
+		Log.i("juelian", "menu long click");
+		JueLianUtils.switchFunction("mipop_choose_what_menu");
 	}
 }

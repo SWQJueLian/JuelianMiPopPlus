@@ -9,8 +9,16 @@ package com.juelian.mipop;
 
 public final class R {
     public static final class array {
+        public static final int mi_back_entries=0x7f050009;
+        public static final int mi_back_values=0x7f050005;
         public static final int mi_fristkey_entries=0x7f050001;
         public static final int mi_fristkey_values=0x7f050000;
+        public static final int mi_home_entries=0x7f050008;
+        public static final int mi_home_values=0x7f050004;
+        public static final int mi_menu_entries=0x7f050007;
+        public static final int mi_menu_values=0x7f050003;
+        public static final int mi_recl_entries=0x7f050006;
+        public static final int mi_recl_values=0x7f050002;
     }
     public static final class attr {
     }
@@ -42,11 +50,16 @@ public final class R {
         public static final int alpha_summary=0x7f070009;
         public static final int alpha_waring_msg=0x7f070008;
         public static final int app_name=0x7f070000;
+        public static final int button_longclick_category_title=0x7f070010;
         public static final int mipop_button_alpha_dialog_msg=0x7f070007;
         public static final int mipop_button_alpha_title=0x7f070006;
         public static final int mipop_firstkey=0x7f070005;
         public static final int mipop_fullscreen_summary=0x7f070004;
         public static final int mipop_fullscreen_title=0x7f070003;
+        public static final int mipop_keyback=0x7f07000c;
+        public static final int mipop_keyhome=0x7f07000d;
+        public static final int mipop_keymenu=0x7f07000e;
+        public static final int mipop_keyrecl=0x7f07000f;
         public static final int mipop_switch_summary=0x7f070002;
         public static final int mipop_switch_title=0x7f070001;
     }

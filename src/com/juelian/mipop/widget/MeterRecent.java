@@ -6,6 +6,7 @@ import android.os.ServiceManager;
 import android.util.Log;
 
 import com.android.internal.statusbar.IStatusBarService;
+import com.juelian.mipop.JueLianUtils;
 import com.juelian.mipop.R;
 
 public class MeterRecent extends MeterBase {
@@ -40,6 +41,7 @@ public class MeterRecent extends MeterBase {
 	}
 
 	public void LongClick() {
-		Log.i("way", "recent  long click");
+		Log.i("juelian", "recent long click");
+		JueLianUtils.switchFunction("mipop_choose_what_recl");
 	}
 }
