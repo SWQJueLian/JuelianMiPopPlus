@@ -11,3 +11,11 @@ android.permission.HARDWARE_TEST在Eclipse下会报错
 将android lint中的protect permission级别改为警告可以忽略
 
 程序下载：https://raw.githubusercontent.com/SWQJueLian/JuelianMiPopPlus/master/JuelianMipopPlus.apk
+
+加强功能：
+
+-->4个按钮长按事件
+
+-->4个按钮透明度调整
+
+-->默认键
