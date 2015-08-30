@@ -27,16 +27,17 @@ public class AnimationTransparent {
 
 	public static void start() {
 		customAlpha = JueLianUtils.getAlpha();
-		if (customAlpha!=255) {
-			int subtract= customAlpha-30;
+		if (customAlpha != 255) {
+			int subtract = customAlpha - 30;
 			currentAlpha = customAlpha;
 			endAlpha = subtract;
 			periodTime = (int) (time4Trans / Math.abs(customAlpha - subtract));
-			//Log.d("juelian", "run start()"+"currentAlpha:"+currentAlpha+"; endAlpha:"+endAlpha+"; periodTime: "+periodTime);
-		}else {
-			periodTime = (int) (time4Trans / Math.abs(startAlpha - endAlpha));						
+			// Log.d("juelian",
+			// "run start()"+"currentAlpha:"+currentAlpha+"; endAlpha:"+endAlpha+"; periodTime: "+periodTime);
+		} else {
+			periodTime = (int) (time4Trans / Math.abs(startAlpha - endAlpha));
 		}
-		//Log.d("juelian", "periodTime="+periodTime);
+		// Log.d("juelian", "periodTime="+periodTime);
 		handler4Transparent.postDelayed(runnable4Transparent, 1L);
 		MeterBase.MeterMap.get(MeterHome.NAME).setVisibility(View.GONE);
 		MeterBase.MeterMap.get(MeterMenu.NAME).setVisibility(View.GONE);
@@ -44,9 +45,10 @@ public class AnimationTransparent {
 	}
 
 	public static void stop() {
-		currentAlpha = customAlpha;//restore
+		currentAlpha = customAlpha;// restore
 		handler4Transparent.removeCallbacks(runnable4Transparent);
-		//Log.d("juelian", "run stop()"+"currentAlpha="+currentAlpha+"; customAlpha:"+customAlpha);
+		// Log.d("juelian",
+		// "run stop()"+"currentAlpha="+currentAlpha+"; customAlpha:"+customAlpha);
 		MeterBase.MeterMap.get(MeterBack.NAME).setAlpha(customAlpha);
 		MeterBase.MeterMap.get(MeterHome.NAME).setVisibility(View.VISIBLE);
 		MeterBase.MeterMap.get(MeterMenu.NAME).setVisibility(View.VISIBLE);
@@ -55,12 +57,13 @@ public class AnimationTransparent {
 
 	private static void transparenting() {
 		if (currentAlpha <= endAlpha) {
-			//Log.d("juelian", "currentAlpha等于endalpha:"+"cu-->"+currentAlpha+"en-->"+endAlpha);
+			// Log.d("juelian",
+			// "currentAlpha等于endalpha:"+"cu-->"+currentAlpha+"en-->"+endAlpha);
 			handler4Transparent.removeCallbacks(runnable4Transparent);
 			return;
 		}
 		currentAlpha--;
-		//Log.d("juelian", "currentAlpha--: "+currentAlpha);
+		// Log.d("juelian", "currentAlpha--: "+currentAlpha);
 		MeterBase.MeterMap.get(MeterBack.NAME).setAlpha(currentAlpha);
 		handler4Transparent.postDelayed(runnable4Transparent, periodTime);
 	}

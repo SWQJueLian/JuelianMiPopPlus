@@ -25,7 +25,8 @@ public class MeterMenu extends MeterBase {
 		new Thread() {
 			public void run() {
 				try {
-					new Instrumentation().sendKeyDownUpSync(KeyEvent.KEYCODE_MENU);
+					new Instrumentation()
+							.sendKeyDownUpSync(KeyEvent.KEYCODE_MENU);
 					Log.i("shenzhan", "MENU implement");
 					return;
 				} catch (Exception e) {

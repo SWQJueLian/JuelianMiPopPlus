@@ -19,7 +19,8 @@ import com.juelian.mipop.widget.Until;
 
 public class MiPopApplication extends Application {
 
-	private ContentObserver mFirstKeyObserver = new ContentObserver(new Handler()) {
+	private ContentObserver mFirstKeyObserver = new ContentObserver(
+			new Handler()) {
 		public void onChange(boolean paramAnonymousBoolean) {
 			MiPopApplication.this.switchFirstKey();
 		}
@@ -41,16 +42,10 @@ public class MiPopApplication extends Application {
 
 	public static void showMipop() {
 		AnimationParking.stop();
-		/*
-		AnimationParking.mOriginSide = AnimationParking.LEFT;
-		AnimationParking.baseX = -1;
-		AnimationParking.updateAll(-1, MeterBack.baseY);
-		*/
 		MeterBase.MeterMap.get(MeterBack.NAME).setVisibility(View.VISIBLE);
 		MeterBase.MeterMap.get(MeterHome.NAME).setVisibility(View.GONE);
 		MeterBase.MeterMap.get(MeterRecent.NAME).setVisibility(View.GONE);
 		MeterBase.MeterMap.get(MeterMenu.NAME).setVisibility(View.GONE);
-		//MeterBase.MeterMap.get(MeterBack.NAME).setAlpha(0.4f);
 		AnimationParking.shrinkStart();
 	}
 
@@ -63,32 +58,46 @@ public class MiPopApplication extends Application {
 		new MeterBack(this);
 		switchFirstKey();
 		setAlphas();
-		getApplicationContext().getContentResolver().registerContentObserver(Settings.System.getUriFor("FirstKey"), false, this.mFirstKeyObserver);
-		getApplicationContext().getContentResolver().registerContentObserver(Settings.System.getUriFor("juelian_button_alpha"), false, this.mButtonAlpha);
+		getApplicationContext().getContentResolver().registerContentObserver(
+				Settings.System.getUriFor("FirstKey"), false,
+				this.mFirstKeyObserver);
+		getApplicationContext().getContentResolver().registerContentObserver(
+				Settings.System.getUriFor("juelian_button_alpha"), false,
+				this.mButtonAlpha);
 	}
-	
-	private void switchFirstKey(){
-		if (Settings.System.getInt(getApplicationContext().getContentResolver(), "FirstKey", 0) == 1){
+
+	private void switchFirstKey() {
+		if (Settings.System.getInt(
+				getApplicationContext().getContentResolver(), "FirstKey", 0) == 1) {
 			// back use home
-			((MeterBase) MeterBase.MeterMap.get(MeterBack.NAME)).setImageResource(R.drawable.home_selector);
-			((MeterBase) MeterBase.MeterMap.get(MeterBack.NAME)).setResId(R.mipmap.home, R.mipmap.home_pressed);
-			((MeterBase) MeterBase.MeterMap.get(MeterHome.NAME)).setImageResource(R.drawable.back_selector);
-			((MeterBase) MeterBase.MeterMap.get(MeterHome.NAME)).setResId(R.mipmap.back, R.mipmap.back_pressed);
+			((MeterBase) MeterBase.MeterMap.get(MeterBack.NAME))
+					.setImageResource(R.drawable.home_selector);
+			((MeterBase) MeterBase.MeterMap.get(MeterBack.NAME)).setResId(
+					R.mipmap.home, R.mipmap.home_pressed);
+			((MeterBase) MeterBase.MeterMap.get(MeterHome.NAME))
+					.setImageResource(R.drawable.back_selector);
+			((MeterBase) MeterBase.MeterMap.get(MeterHome.NAME)).setResId(
+					R.mipmap.back, R.mipmap.back_pressed);
 			((MeterBase) MeterBase.MeterMap.get(MeterBack.NAME)).setKeyCode(1);
 			((MeterBase) MeterBase.MeterMap.get(MeterHome.NAME)).setKeyCode(1);
-	    }else {
-	    	//normal
-	    	((MeterBase) MeterBase.MeterMap.get(MeterBack.NAME)).setImageResource(R.drawable.back_selector);
-	    	((MeterBase) MeterBase.MeterMap.get(MeterBack.NAME)).setResId(R.mipmap.back, R.mipmap.back_pressed);
-	    	((MeterBase) MeterBase.MeterMap.get(MeterHome.NAME)).setImageResource(R.drawable.home_selector);
-	    	((MeterBase) MeterBase.MeterMap.get(MeterHome.NAME)).setResId(R.mipmap.home, R.mipmap.home_pressed);
-	    	((MeterBase) MeterBase.MeterMap.get(MeterBack.NAME)).setKeyCode(0);
-	    	((MeterBase) MeterBase.MeterMap.get(MeterHome.NAME)).setKeyCode(0);
+		} else {
+			// normal
+			((MeterBase) MeterBase.MeterMap.get(MeterBack.NAME))
+					.setImageResource(R.drawable.back_selector);
+			((MeterBase) MeterBase.MeterMap.get(MeterBack.NAME)).setResId(
+					R.mipmap.back, R.mipmap.back_pressed);
+			((MeterBase) MeterBase.MeterMap.get(MeterHome.NAME))
+					.setImageResource(R.drawable.home_selector);
+			((MeterBase) MeterBase.MeterMap.get(MeterHome.NAME)).setResId(
+					R.mipmap.home, R.mipmap.home_pressed);
+			((MeterBase) MeterBase.MeterMap.get(MeterBack.NAME)).setKeyCode(0);
+			((MeterBase) MeterBase.MeterMap.get(MeterHome.NAME)).setKeyCode(0);
 		}
 	}
-	
+
 	public void setAlphas() {
-		int i = Settings.System.getInt(getApplicationContext().getContentResolver(), "juelian_button_alpha", 255);
+		int i = Settings.System.getInt(getApplicationContext()
+				.getContentResolver(), "juelian_button_alpha", 255);
 		((MeterBase) MeterBase.MeterMap.get(MeterBack.NAME)).setAlpha(i);
 		((MeterBase) MeterBase.MeterMap.get(MeterHome.NAME)).setAlpha(i);
 		((MeterBase) MeterBase.MeterMap.get(MeterMenu.NAME)).setAlpha(i);

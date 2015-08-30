@@ -45,7 +45,7 @@ public abstract class MeterBase extends ImageView {
 			if (!AnimationParking.mOriginSide) {
 				Settings.System.putInt(MeterBase.mContext.getContentResolver(),
 						"MipopPosX", Until.SCREEM_WIDTH - Until.IMAGE_WIDTH);
-			}else {
+			} else {
 				Settings.System.putInt(MeterBase.mContext.getContentResolver(),
 						"MipopPosX", 0x0);
 			}
@@ -58,12 +58,16 @@ public abstract class MeterBase extends ImageView {
 	public MeterBase(Context context) {
 		super(context);
 		mContext = context;
-		baseX = Settings.System.getInt(mContext.getContentResolver(),"MipopPosX", 0x0);
-		baseY = Settings.System.getInt(mContext.getContentResolver(),"MipopPosY", (Until.SCREEM_HEIGHT / 2));
-		this.mWindowManager = ((WindowManager) context.getApplicationContext().getSystemService(Context.WINDOW_SERVICE));
+		baseX = Settings.System.getInt(mContext.getContentResolver(),
+				"MipopPosX", 0x0);
+		baseY = Settings.System.getInt(mContext.getContentResolver(),
+				"MipopPosY", (Until.SCREEM_HEIGHT / 2));
+		this.mWindowManager = ((WindowManager) context.getApplicationContext()
+				.getSystemService(Context.WINDOW_SERVICE));
 		this.wmParams.type = LayoutParams.TYPE_SYSTEM_ALERT;
 		this.wmParams.format = PixelFormat.TRANSPARENT;
-		wmParams.flags = LayoutParams.FLAG_NOT_FOCUSABLE | LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
+		wmParams.flags = LayoutParams.FLAG_NOT_FOCUSABLE
+				| LayoutParams.FLAG_WATCH_OUTSIDE_TOUCH;
 		this.wmParams.gravity = Gravity.LEFT | Gravity.TOP;
 		this.wmParams.x = baseX;
 		this.wmParams.y = baseY;
@@ -110,18 +114,18 @@ public abstract class MeterBase extends ImageView {
 					Click();
 				}
 			}
-			if(isLongClick){
+			if (isLongClick) {
 				Log.i("Suhao.Click", "MeterBase.UP, Long click");
-			}else if(hasMoved){
+			} else if (hasMoved) {
 				Log.i("Suhao.Click", "MeterBase.UP, has moved");
 			}
-			
-	        hasMoved = false;
-	        isLongClick = false;
-	        mHandlerPosXY.removeCallbacks(mMemoryXY);
-	        mHandlerPosXY.postDelayed(mMemoryXY, 1000L);
-            AnimationParking.start();
-            return true;
+
+			hasMoved = false;
+			isLongClick = false;
+			mHandlerPosXY.removeCallbacks(mMemoryXY);
+			mHandlerPosXY.postDelayed(mMemoryXY, 1000L);
+			AnimationParking.start();
+			return true;
 
 		default:
 			break;
@@ -129,37 +133,21 @@ public abstract class MeterBase extends ImageView {
 		Log.i("OUT", "base ACTION_OUTSIDE" + this.hasMoved);
 		AnimationParking.shrinkStart();
 		return true;
-        /*for (;;)
-        {
-            return true;
-            AppLog.i("OUT", "base DOWN" + this.hasMoved);
-            setImageResource(this.resIdPressed);
-            this.handler4LongClick.postDelayed(this.runnable4LongClick, 1000L);
-            AnimationParking.stop();
-            continue;
-            AppLog.i("OUT", "base UP" + this.hasMoved);
-            setImageResource(this.resId);
-            this.handler4LongClick.removeCallbacks(this.runnable4LongClick);
-            if (!this.hasMoved) {
-                if (!this.isLongClick)
-                {
-                    AppLog.i("Suhao.Click", "MeterBase.UP, Click");
-                    Click();
-                }
-            }
-            for (;;)
-            {
-                this.hasMoved = false;
-                this.isLongClick = false;
-                AnimationParking.start();
-                break;
-                AppLog.i("Suhao.Click", "MeterBase.UP, Long click");
-                continue;
-                AppLog.i("Suhao.Click", "MeterBase.UP, has moved");
-            }
-            AppLog.i("OUT", "base ACTION_OUTSIDE" + this.hasMoved);
-            AnimationParking.shrinkStart();
-        }*/
+		/*
+		 * for (;;) { return true; AppLog.i("OUT", "base DOWN" + this.hasMoved);
+		 * setImageResource(this.resIdPressed);
+		 * this.handler4LongClick.postDelayed(this.runnable4LongClick, 1000L);
+		 * AnimationParking.stop(); continue; AppLog.i("OUT", "base UP" +
+		 * this.hasMoved); setImageResource(this.resId);
+		 * this.handler4LongClick.removeCallbacks(this.runnable4LongClick); if
+		 * (!this.hasMoved) { if (!this.isLongClick) { AppLog.i("Suhao.Click",
+		 * "MeterBase.UP, Click"); Click(); } } for (;;) { this.hasMoved =
+		 * false; this.isLongClick = false; AnimationParking.start(); break;
+		 * AppLog.i("Suhao.Click", "MeterBase.UP, Long click"); continue;
+		 * AppLog.i("Suhao.Click", "MeterBase.UP, has moved"); } AppLog.i("OUT",
+		 * "base ACTION_OUTSIDE" + this.hasMoved);
+		 * AnimationParking.shrinkStart(); }
+		 */
 	}
 
 	public void setResId(int normal, int pressed) {
@@ -172,7 +160,7 @@ public abstract class MeterBase extends ImageView {
 		wmParams.y = y;
 		mWindowManager.updateViewLayout(this, wmParams);
 	}
-	
+
 	public int getKeyCode() {
 		return mKeyCode;
 	}

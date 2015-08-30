@@ -14,8 +14,8 @@ public class MeterHome extends MeterBase {
 		super(context);
 		Register(NAME, this);
 		setSoundEffectsEnabled(true);
-		//setImageResource(R.drawable.home_selector);
-		//setResId(R.mipmap.home, R.mipmap.home_pressed);
+		// setImageResource(R.drawable.home_selector);
+		// setResId(R.mipmap.home, R.mipmap.home_pressed);
 	}
 
 	public void Click() {
@@ -26,10 +26,12 @@ public class MeterHome extends MeterBase {
 				try {
 					Instrumentation instrumentation = new Instrumentation();
 					int keyCode = MeterHome.this.getKeyCode();
-					if (keyCode==0) {
-						instrumentation.sendKeyDownUpSync(KeyEvent.KEYCODE_HOME);						
-					}else if(keyCode==1) {
-						instrumentation.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+					if (keyCode == 0) {
+						instrumentation
+								.sendKeyDownUpSync(KeyEvent.KEYCODE_HOME);
+					} else if (keyCode == 1) {
+						instrumentation
+								.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
 					}
 					return;
 				} catch (Exception e) {

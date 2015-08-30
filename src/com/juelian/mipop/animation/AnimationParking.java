@@ -81,7 +81,7 @@ public class AnimationParking {
 
 	public static void land() {
 		if (!mOriginSide) {
-			Log.d("mijl", "mOriginSide"+mOriginSide);
+			Log.d("mijl", "mOriginSide" + mOriginSide);
 			stop();
 			baseX = Until.SCREEM_WIDTH - Until.IMAGE_WIDTH;
 			updateAll(baseX, baseY);
@@ -238,8 +238,7 @@ public class AnimationParking {
 			mOriginSide = LEFT;
 			mAreaChanged = false;
 			handler4Shrink.removeCallbacks(runnable4Shrink);
-			Log.i("Suhao.TransParent",
-					"AnimationParking.shrinking(), baseX<1");
+			Log.i("Suhao.TransParent", "AnimationParking.shrinking(), baseX<1");
 			AnimationTransparent.start();
 			return;
 		}
@@ -407,15 +406,15 @@ public class AnimationParking {
 					&& x > Until.MID_LINE) {
 				Log.i("Bottom", "RIGHT");
 				int offsetY = Until.BOTTOM_LINE;
-				Log.i("juelian", "y: " +y+" === offsetY: "+offsetY);
+				Log.i("juelian", "y: " + y + " === offsetY: " + offsetY);
 				baseX = x;
 				if (isLand) {
 					baseY = y;
-					updateAll(x,y);
+					updateAll(x, y);
 					return;
 				}
 				baseY = offsetY;
-				updateAll(x,offsetY);							
+				updateAll(x, offsetY);
 			}
 		}
 	}

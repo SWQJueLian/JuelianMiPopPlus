@@ -22,8 +22,8 @@ public class MeterBack extends MeterBase {
 		super(context);
 		Register(NAME, this);
 		setSoundEffectsEnabled(true);
-		//setImageResource(R.drawable.back_selector);
-		//setResId(R.mipmap.back, R.mipmap.back_pressed);
+		// setImageResource(R.drawable.back_selector);
+		// setResId(R.mipmap.back, R.mipmap.back_pressed);
 	}
 
 	public void Click() {
@@ -34,10 +34,12 @@ public class MeterBack extends MeterBase {
 				try {
 					Instrumentation instrumentation = new Instrumentation();
 					int keyCode = MeterBack.this.getKeyCode();
-					if (keyCode==0) {
-						instrumentation.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);						
-					}else if(keyCode==1){
-						instrumentation.sendKeyDownUpSync(KeyEvent.KEYCODE_HOME);
+					if (keyCode == 0) {
+						instrumentation
+								.sendKeyDownUpSync(KeyEvent.KEYCODE_BACK);
+					} else if (keyCode == 1) {
+						instrumentation
+								.sendKeyDownUpSync(KeyEvent.KEYCODE_HOME);
 					}
 					Log.i("shenzhan", "Back implement");
 					return;
@@ -63,9 +65,9 @@ public class MeterBack extends MeterBase {
 	public boolean onTouchEvent(MotionEvent event) {
 		int rawX = (int) event.getRawX();
 		int rawY = (int) event.getRawY() - Until.STATUS_HEIGHT;
-		//if ((Math.abs(rawX - mTouchStartX) <= Until.MOVE_MAX_SIZE)
-		//		&& (Math.abs(rawY - mTouchStartY) <= Until.MOVE_MAX_SIZE))
-		//	return super.onTouchEvent(event);
+		// if ((Math.abs(rawX - mTouchStartX) <= Until.MOVE_MAX_SIZE)
+		// && (Math.abs(rawY - mTouchStartY) <= Until.MOVE_MAX_SIZE))
+		// return super.onTouchEvent(event);
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
 			Log.i("OUT", "back ACTION_DOWN" + this.hasMoved);
@@ -79,7 +81,7 @@ public class MeterBack extends MeterBase {
 			int offsetX = rawX - changeX;
 			int offsetY = rawY - changeY;
 			if ((Math.abs(offsetX) > 3) || (Math.abs(offsetY) > 3)) {
-				//AppLog.i("way", "baseX/offsetX = " + baseX + "/" + offsetX);
+				// AppLog.i("way", "baseX/offsetX = " + baseX + "/" + offsetX);
 				baseX = offsetX + baseX;
 				baseY = offsetY + baseY;
 				AnimationParking.updateAll(baseX, baseY);
