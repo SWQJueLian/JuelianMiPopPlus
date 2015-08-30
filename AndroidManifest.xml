@@ -23,7 +23,7 @@
             android:name="com.juelian.mipop.PreferenceSettings"
             android:label="@string/app_name"
 			android:noHistory="true"
-			android:excludeFromRecents="false"
+			android:excludeFromRecents="true"
             android:launchMode="singleTask" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
