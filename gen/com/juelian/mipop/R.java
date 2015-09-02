@@ -10,15 +10,15 @@ package com.juelian.mipop;
 public final class R {
     public static final class array {
         public static final int mi_back_entries=0x7f050009;
-        public static final int mi_back_values=0x7f050005;
-        public static final int mi_fristkey_entries=0x7f050001;
+        public static final int mi_back_values=0x7f050004;
+        public static final int mi_fristkey_entries=0x7f050005;
         public static final int mi_fristkey_values=0x7f050000;
         public static final int mi_home_entries=0x7f050008;
-        public static final int mi_home_values=0x7f050004;
+        public static final int mi_home_values=0x7f050003;
         public static final int mi_menu_entries=0x7f050007;
-        public static final int mi_menu_values=0x7f050003;
+        public static final int mi_menu_values=0x7f050002;
         public static final int mi_recl_entries=0x7f050006;
-        public static final int mi_recl_values=0x7f050002;
+        public static final int mi_recl_values=0x7f050001;
     }
     public static final class attr {
     }
