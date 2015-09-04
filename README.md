@@ -1,23 +1,26 @@
 
-基于WAY的开源项目，MIPOP原为ZTE的屏幕助手。
+#Mipop功能加强版
 
-本项目在WAY反编译开源的情况下进行功能加强以及修改。
+***
+**基于WAY的开源项目，MIPOP原为ZTE的屏幕助手。**
 
-需要系统签名，需要加载layoutjar库。
+**本项目在WAY反编译开源的情况下进行功能加强以及修改。**
 
-本项目在Eclipse下进行开发
+**需要系统签名，需要加载layoutjar库。**
 
-android.permission.HARDWARE_TEST在Eclipse下会报错
-将android lint中的protect permission级别改为警告可以忽略
+**本项目在Eclipse下进行开发。**
 
-程序下载：https://raw.githubusercontent.com/SWQJueLian/JuelianMiPopPlus/master/JuelianMipopPlus.apk
+**android.permission.HARDWARE_TEST在Eclipse下会报错。**
 
-加强功能：
+**将android lint中的protect permission级别改为警告可以忽略。**
 
--->4个按钮长按事件
+###程序下载：_[点我下载](https://raw.githubusercontent.com/SWQJueLian/JuelianMiPopPlus/master/JuelianMipopPlus.apk)_
 
--->4个按钮透明度调整
 
--->默认键
+##加强功能：
+#####1. 4个按钮长按事件
+#####2. 4个按钮透明度调整
+#####3. 默认键
 
-![Screenshot 1](https://raw.githubusercontent.com/SWQJueLian/JuelianMiPopPlus/master/screenshot.png "Screenshot 1")
+##截图:
+![Screenshot](https://raw.githubusercontent.com/SWQJueLian/JuelianMiPopPlus/master/screenshot.png "截图")
