@@ -93,10 +93,6 @@ public abstract class MeterBase extends ImageView {
 		hasMoved = true;
 		handler4LongClick.removeCallbacks(runnable4LongClick);
 	}
-	
-	public static boolean isShark(){
-		return AnimationParking.isShark;
-	}
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
@@ -104,12 +100,6 @@ public abstract class MeterBase extends ImageView {
 		//°´ÏÂ
 		case MotionEvent.ACTION_DOWN:
 			Log.i("OUT", "base DOWN" + hasMoved);
-			if (isShark()) {
-				Log.d("mijl-->", "base DOWN"+"isShark:"+isShark());
-				MeterBase.MeterMap.get(MeterHome.NAME).setClickable(false);
-				MeterBase.MeterMap.get(MeterMenu.NAME).setClickable(false);
-				MeterBase.MeterMap.get(MeterRecent.NAME).setClickable(false);
-			}
 			setImageResource(resIdPressed);
 			handler4LongClick.postDelayed(runnable4LongClick, mTime4LongClick);
 			AnimationParking.stop();
@@ -121,12 +111,6 @@ public abstract class MeterBase extends ImageView {
 		//Ì§Æð
 		case MotionEvent.ACTION_UP:
 			Log.i("OUT", "base UP" + this.hasMoved);
-			if (isShark()) {
-				Log.d("mijl-->", "base UP"+"isShark:"+isShark());
-				MeterBase.MeterMap.get(MeterHome.NAME).setClickable(true);
-				MeterBase.MeterMap.get(MeterMenu.NAME).setClickable(true);
-				MeterBase.MeterMap.get(MeterRecent.NAME).setClickable(true);
-			}
 			setImageResource(resId);
 			this.handler4LongClick.removeCallbacks(runnable4LongClick);
 			if (!hasMoved) {
