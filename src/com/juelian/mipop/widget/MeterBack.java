@@ -65,9 +65,6 @@ public class MeterBack extends MeterBase {
 	public boolean onTouchEvent(MotionEvent event) {
 		int rawX = (int) event.getRawX();
 		int rawY = (int) event.getRawY() - Until.STATUS_HEIGHT;
-		// if ((Math.abs(rawX - mTouchStartX) <= Until.MOVE_MAX_SIZE)
-		// && (Math.abs(rawY - mTouchStartY) <= Until.MOVE_MAX_SIZE))
-		// return super.onTouchEvent(event);
 		switch (event.getAction()) {
 		case MotionEvent.ACTION_DOWN:
 			Log.i("OUT", "back ACTION_DOWN" + this.hasMoved);

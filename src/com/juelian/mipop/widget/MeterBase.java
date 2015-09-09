@@ -11,6 +11,7 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.MotionEvent;
+import android.view.View;
 import android.view.WindowManager;
 import android.view.WindowManager.LayoutParams;
 import android.widget.ImageView;
@@ -92,20 +93,40 @@ public abstract class MeterBase extends ImageView {
 		hasMoved = true;
 		handler4LongClick.removeCallbacks(runnable4LongClick);
 	}
+	
+	public static boolean isShark(){
+		return AnimationParking.isShark;
+	}
 
 	@Override
 	public boolean onTouchEvent(MotionEvent event) {
 		switch (event.getAction()) {
+		//°´ÏÂ
 		case MotionEvent.ACTION_DOWN:
 			Log.i("OUT", "base DOWN" + hasMoved);
+			if (isShark()) {
+				Log.d("mijl-->", "base DOWN"+"isShark:"+isShark());
+				MeterBase.MeterMap.get(MeterHome.NAME).setClickable(false);
+				MeterBase.MeterMap.get(MeterMenu.NAME).setClickable(false);
+				MeterBase.MeterMap.get(MeterRecent.NAME).setClickable(false);
+			}
 			setImageResource(resIdPressed);
 			handler4LongClick.postDelayed(runnable4LongClick, mTime4LongClick);
 			AnimationParking.stop();
 			return true;
+			
 		case MotionEvent.ACTION_MOVE:
 			return true;
+		
+		//Ì§Æð
 		case MotionEvent.ACTION_UP:
 			Log.i("OUT", "base UP" + this.hasMoved);
+			if (isShark()) {
+				Log.d("mijl-->", "base UP"+"isShark:"+isShark());
+				MeterBase.MeterMap.get(MeterHome.NAME).setClickable(true);
+				MeterBase.MeterMap.get(MeterMenu.NAME).setClickable(true);
+				MeterBase.MeterMap.get(MeterRecent.NAME).setClickable(true);
+			}
 			setImageResource(resId);
 			this.handler4LongClick.removeCallbacks(runnable4LongClick);
 			if (!hasMoved) {
@@ -133,21 +154,6 @@ public abstract class MeterBase extends ImageView {
 		Log.i("OUT", "base ACTION_OUTSIDE" + this.hasMoved);
 		AnimationParking.shrinkStart();
 		return true;
-		/*
-		 * for (;;) { return true; AppLog.i("OUT", "base DOWN" + this.hasMoved);
-		 * setImageResource(this.resIdPressed);
-		 * this.handler4LongClick.postDelayed(this.runnable4LongClick, 1000L);
-		 * AnimationParking.stop(); continue; AppLog.i("OUT", "base UP" +
-		 * this.hasMoved); setImageResource(this.resId);
-		 * this.handler4LongClick.removeCallbacks(this.runnable4LongClick); if
-		 * (!this.hasMoved) { if (!this.isLongClick) { AppLog.i("Suhao.Click",
-		 * "MeterBase.UP, Click"); Click(); } } for (;;) { this.hasMoved =
-		 * false; this.isLongClick = false; AnimationParking.start(); break;
-		 * AppLog.i("Suhao.Click", "MeterBase.UP, Long click"); continue;
-		 * AppLog.i("Suhao.Click", "MeterBase.UP, has moved"); } AppLog.i("OUT",
-		 * "base ACTION_OUTSIDE" + this.hasMoved);
-		 * AnimationParking.shrinkStart(); }
-		 */
 	}
 
 	public void setResId(int normal, int pressed) {

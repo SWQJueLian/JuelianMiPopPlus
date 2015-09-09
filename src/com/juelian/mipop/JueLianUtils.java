@@ -54,11 +54,11 @@ public class JueLianUtils {
 				}
 			}
 		} catch (FileNotFoundException e) {
-			Log.e("mijl-->error", "can't not found" + file.toString());
-			Log.e("mijl-->info", "add default packname list");
+			Log.e("mijl-->", "can't not found" + file.toString());
+			Log.e("mijl-->", "add default packname list");
 			e.printStackTrace();
 		} catch (IOException e) {
-			Log.e("mijl-->error",
+			Log.e("mijl-->",
 					"reader is closed or some other I/O error occurs");
 			e.printStackTrace();
 		} finally {
