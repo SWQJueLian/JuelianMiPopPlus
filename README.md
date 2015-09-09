@@ -16,8 +16,6 @@
 
 **需要系统签名**
 
-###程序下载：_[点我下载](https://raw.githubusercontent.com/SWQJueLian/JuelianMiPopPlus/master/JuelianMipopPlus.apk)_
-
 
 ##加强功能：
 #####1. 4个按钮长按事件
