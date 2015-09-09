@@ -14,6 +14,8 @@
 
 **将android lint中的protect permission级别改为警告可以忽略。**
 
+**需要系统签名**
+
 ###程序下载：_[点我下载](https://raw.githubusercontent.com/SWQJueLian/JuelianMiPopPlus/master/JuelianMipopPlus.apk)_
 
 
