@@ -178,6 +178,45 @@ public class JueLianUtils {
 		case 2:// kill current app
 			KillApp(mContext);
 			break;
+			
+		case 3:
+			new Thread() {
+				boolean flag = true;
+
+				public void run() {
+					if (flag) {
+						try {
+							new Instrumentation()
+									.sendKeyDownUpSync(KeyEvent.KEYCODE_VOLUME_UP);
+						} catch (Exception e) {
+							Log.e("mijl-->",
+									"deadobjectException,sendKeyDown fail can not shutdown screen");
+						}
+						flag = false;
+					}
+				};
+			}.start();
+			break;
+			
+		case 4:
+			new Thread() {
+				boolean flag = true;
+
+				public void run() {
+					if (flag) {
+						try {
+							new Instrumentation()
+									.sendKeyDownUpSync(KeyEvent.KEYCODE_VOLUME_DOWN);
+						} catch (Exception e) {
+							Log.e("mijl-->",
+									"deadobjectException,sendKeyDown fail can not shutdown screen");
+						}
+						flag = false;
+					}
+				};
+			}.start();
+			break;
 		}
+		
 	}
 }

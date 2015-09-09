@@ -229,14 +229,4 @@ public class PreferenceSettings extends PreferenceActivity implements
 		setupFullScreen();
 	}
 
-	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-		Log.i(TAG, "ondestory-->");
-		this.mMiPop = null;
-		this.mFullScreen = null;
-		this.mSharedPreferences = null;
-	}
-
 }
