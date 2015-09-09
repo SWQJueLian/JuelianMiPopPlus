@@ -18,6 +18,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.os.RemoteException;
+import android.os.SystemProperties;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -124,6 +125,10 @@ public class JueLianUtils {
 		return Settings.System.getInt(context.getContentResolver(), strKey,
 				defValues);
 	}
+	
+	public static boolean isMIUI(){
+		return !SystemProperties.get("ro.miui.ui.version.code").isEmpty();
+	}
 
 	public static void switchFunction() {
 		int firstkey = getSystemInt(mContext, "FirstKey", 0);
@@ -186,6 +191,10 @@ public class JueLianUtils {
 				public void run() {
 					if (flag) {
 						try {
+							if (isMIUI()) {
+								new Instrumentation()
+								.sendKeyDownUpSync(KeyEvent.KEYCODE_VOLUME_UP);
+							}
 							new Instrumentation()
 									.sendKeyDownUpSync(KeyEvent.KEYCODE_VOLUME_UP);
 						} catch (Exception e) {
@@ -205,6 +214,10 @@ public class JueLianUtils {
 				public void run() {
 					if (flag) {
 						try {
+							if (isMIUI()) {
+								new Instrumentation()
+								.sendKeyDownUpSync(KeyEvent.KEYCODE_VOLUME_DOWN);
+							}
 							new Instrumentation()
 									.sendKeyDownUpSync(KeyEvent.KEYCODE_VOLUME_DOWN);
 						} catch (Exception e) {
