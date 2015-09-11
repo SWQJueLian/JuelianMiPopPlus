@@ -17,6 +17,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.media.AudioManager;
 import android.os.RemoteException;
 import android.os.SystemProperties;
 import android.provider.Settings;
@@ -29,7 +30,8 @@ import com.juelian.mipop.widget.MeterBase;
 public class JueLianUtils {
 
 	public static Context mContext = MeterBase.mContext;
-
+	private static AudioManager audioManager;
+	
 	public static int getAlpha() {
 		return Settings.System.getInt(mContext.getContentResolver(),
 				"juelian_button_alpha", 255);
@@ -125,11 +127,11 @@ public class JueLianUtils {
 		return Settings.System.getInt(context.getContentResolver(), strKey,
 				defValues);
 	}
-	
+	/*
 	public static boolean isMIUI(){
 		return !SystemProperties.get("ro.miui.ui.version.code").isEmpty();
 	}
-
+	*/
 	public static void switchFunction() {
 		int firstkey = getSystemInt(mContext, "FirstKey", 0);
 		String whatKey = "";
@@ -185,49 +187,13 @@ public class JueLianUtils {
 			break;
 			
 		case 3:
-			new Thread() {
-				boolean flag = true;
-
-				public void run() {
-					if (flag) {
-						try {
-							if (isMIUI()) {
-								new Instrumentation()
-								.sendKeyDownUpSync(KeyEvent.KEYCODE_VOLUME_UP);
-							}
-							new Instrumentation()
-									.sendKeyDownUpSync(KeyEvent.KEYCODE_VOLUME_UP);
-						} catch (Exception e) {
-							Log.e("mijl-->",
-									"deadobjectException,sendKeyDown fail can not shutdown screen");
-						}
-						flag = false;
-					}
-				};
-			}.start();
+			audioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+			audioManager.adjustVolume(AudioManager.ADJUST_RAISE,AudioManager.FLAG_PLAY_SOUND);
 			break;
 			
 		case 4:
-			new Thread() {
-				boolean flag = true;
-
-				public void run() {
-					if (flag) {
-						try {
-							if (isMIUI()) {
-								new Instrumentation()
-								.sendKeyDownUpSync(KeyEvent.KEYCODE_VOLUME_DOWN);
-							}
-							new Instrumentation()
-									.sendKeyDownUpSync(KeyEvent.KEYCODE_VOLUME_DOWN);
-						} catch (Exception e) {
-							Log.e("mijl-->",
-									"deadobjectException,sendKeyDown fail can not shutdown screen");
-						}
-						flag = false;
-					}
-				};
-			}.start();
+			audioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
+			audioManager.adjustVolume(AudioManager.ADJUST_LOWER,AudioManager.FLAG_PLAY_SOUND);
 			break;
 		}
 		
