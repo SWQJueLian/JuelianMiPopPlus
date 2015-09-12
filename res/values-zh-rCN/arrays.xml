@@ -4,6 +4,10 @@
         <item>返回键(默认)</item>
         <item>Home键</item>
     </string-array>
+    <string-array name="mi_theme_entries">
+        <item>默认</item>
+        <item>MIUI风格</item>
+    </string-array>
     <string-array name="mi_recl_entries">
         <item>无动作</item>
         <item>锁屏</item>

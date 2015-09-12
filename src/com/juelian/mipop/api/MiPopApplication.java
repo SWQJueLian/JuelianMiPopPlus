@@ -22,7 +22,7 @@ public class MiPopApplication extends Application {
 	private ContentObserver mFirstKeyObserver = new ContentObserver(
 			new Handler()) {
 		public void onChange(boolean paramAnonymousBoolean) {
-			MiPopApplication.this.switchFirstKey();
+			switchTheme();
 		}
 	};
 
@@ -30,6 +30,12 @@ public class MiPopApplication extends Application {
 		public void onChange(boolean paramAnonymousBoolean) {
 			setAlphas();
 			AnimationTransparent.start();
+		}
+	};
+	
+	private ContentObserver mTheme = new ContentObserver(new Handler()) {
+		public void onChange(boolean paramAnonymousBoolean) {
+			switchTheme();
 		}
 	};
 
@@ -56,7 +62,8 @@ public class MiPopApplication extends Application {
 		new MeterRecent(this);
 		new MeterHome(this);
 		new MeterBack(this);
-		switchFirstKey();
+		//switchFirstKey();
+		switchTheme();
 		setAlphas();
 		getApplicationContext().getContentResolver().registerContentObserver(
 				Settings.System.getUriFor("FirstKey"), false,
@@ -64,8 +71,12 @@ public class MiPopApplication extends Application {
 		getApplicationContext().getContentResolver().registerContentObserver(
 				Settings.System.getUriFor("juelian_button_alpha"), false,
 				this.mButtonAlpha);
+		getApplicationContext().getContentResolver().registerContentObserver(
+				Settings.System.getUriFor("juelian_button_theme"), false,
+				this.mTheme);
 	}
 
+	/*
 	private void switchFirstKey() {
 		if (Settings.System.getInt(
 				getApplicationContext().getContentResolver(), "FirstKey", 0) == 1) {
@@ -94,6 +105,7 @@ public class MiPopApplication extends Application {
 			((MeterBase) MeterBase.MeterMap.get(MeterHome.NAME)).setKeyCode(0);
 		}
 	}
+	*/
 
 	public void setAlphas() {
 		int i = Settings.System.getInt(getApplicationContext()
@@ -103,6 +115,78 @@ public class MiPopApplication extends Application {
 		((MeterBase) MeterBase.MeterMap.get(MeterMenu.NAME)).setAlpha(i);
 		((MeterBase) MeterBase.MeterMap.get(MeterRecent.NAME)).setAlpha(i);
 		Log.i("mijl-->", "mipop button alpha: " + i);
+	}
+	
+	public void switchTheme(){
+		switch (Settings.System.getInt(getApplicationContext().getContentResolver(), "juelian_button_theme", 0)) {
+		
+		case 0:
+			if (Settings.System.getInt(
+					getApplicationContext().getContentResolver(), "FirstKey", 0) == 1) {
+				// back use home
+				MeterBase.MeterMap.get(MeterBack.NAME).setImageResource(
+						R.drawable.home_selector);
+				MeterBase.MeterMap.get(MeterBack.NAME).setResId(R.mipmap.home,
+						R.mipmap.home_pressed);
+				MeterBase.MeterMap.get(MeterHome.NAME).setImageResource(
+						R.drawable.back_selector);
+				MeterBase.MeterMap.get(MeterHome.NAME).setResId(R.mipmap.back,
+						R.mipmap.back_pressed);
+			} else {
+				// normal
+				MeterBase.MeterMap.get(MeterBack.NAME).setImageResource(
+						R.drawable.back_selector);
+				MeterBase.MeterMap.get(MeterBack.NAME).setResId(R.mipmap.back,
+						R.mipmap.back_pressed);
+				MeterBase.MeterMap.get(MeterHome.NAME).setImageResource(
+						R.drawable.home_selector);
+				MeterBase.MeterMap.get(MeterHome.NAME).setResId(R.mipmap.home,
+						R.mipmap.home_pressed);
+			}
+			MeterBase.MeterMap.get(MeterMenu.NAME).setImageResource(
+					R.drawable.menu_selector);
+			MeterBase.MeterMap.get(MeterMenu.NAME).setResId(R.mipmap.menu,
+					R.mipmap.menu_pressed);
+			MeterBase.MeterMap.get(MeterRecent.NAME).setImageResource(
+					R.drawable.recent_selector);
+			MeterBase.MeterMap.get(MeterRecent.NAME).setResId(R.mipmap.recent,
+					R.mipmap.recent_pressed);
+			break;
+			
+		case 1:
+			if (Settings.System.getInt(
+					getApplicationContext().getContentResolver(), "FirstKey", 0) == 1) {
+				// back use home
+				MeterBase.MeterMap.get(MeterBack.NAME).setImageResource(
+						R.drawable.mhome_selector);
+				MeterBase.MeterMap.get(MeterBack.NAME).setResId(R.mipmap.mhome,
+						R.mipmap.mhomehome_pressed);
+				MeterBase.MeterMap.get(MeterHome.NAME).setImageResource(
+						R.drawable.mback_selector);
+				MeterBase.MeterMap.get(MeterHome.NAME).setResId(
+						R.mipmap.mhomeback, R.mipmap.mhomeback_pressed);
+			} else {
+				// normal
+				MeterBase.MeterMap.get(MeterBack.NAME).setImageResource(
+						R.drawable.mback_selector);
+				MeterBase.MeterMap.get(MeterBack.NAME).setResId(
+						R.mipmap.mhomeback, R.mipmap.mhomeback_pressed);
+				MeterBase.MeterMap.get(MeterHome.NAME).setImageResource(
+						R.drawable.mhome_selector);
+				MeterBase.MeterMap.get(MeterHome.NAME).setResId(R.mipmap.mhome,
+						R.mipmap.mhomehome_pressed);
+			}
+			MeterBase.MeterMap.get(MeterMenu.NAME).setImageResource(
+					R.drawable.mmenu_selector);
+			MeterBase.MeterMap.get(MeterMenu.NAME).setResId(R.mipmap.mhomemenu,
+					R.mipmap.mhomemenu_pressed);
+			MeterBase.MeterMap.get(MeterRecent.NAME).setImageResource(
+					R.drawable.mrecent_selector);
+			MeterBase.MeterMap.get(MeterRecent.NAME).setResId(R.mipmap.mhomerecent,
+					R.mipmap.mhomerecent_pressed);
+			break;
+		}
+		
 	}
 
 }

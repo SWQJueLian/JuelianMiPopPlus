@@ -4,6 +4,10 @@
         <item>0</item>
         <item>1</item>
     </string-array>
+    <string-array name="mi_theme_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
     <string-array name="mi_recl_values">
         <item>0</item>
         <item>1</item>
@@ -35,6 +39,10 @@
     <string-array name="mi_fristkey_entries">
         <item>Back Key(default)</item>
         <item>Home Key</item>
+    </string-array>
+    <string-array name="mi_theme_entries">
+        <item>Default</item>
+        <item>MIUI Style</item>
     </string-array>
     <string-array name="mi_recl_entries">
         <item>Nothing</item>

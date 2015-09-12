@@ -30,6 +30,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 	private ListPreference mHomeKeyListPreference;
 	private ListPreference mMenuKeyListPreference;
 	private ListPreference mReclKeyListPreference;
+	private ListPreference mThemeListPreference;
 
 	/* KEY */
 	public static final String KEY_SWITCH_STRING = "mipop_switch";
@@ -40,7 +41,8 @@ public class PreferenceSettings extends PreferenceActivity implements
 	public static final String KEY_HOME_STRING = "homekey";
 	public static final String KEY_MENU_STRING = "menukey";
 	public static final String KEY_RECL_STRING = "reclkey";
-
+	public static final String KEY_THEME_STRING = "theme";
+	
 	private String alphaSummaryFormat;
 
 	public void onCreate(Bundle bundle) {
@@ -99,6 +101,12 @@ public class PreferenceSettings extends PreferenceActivity implements
 						.getInt(getContentResolver(), "mipop_choose_what_recl",
 								0)]);
 		mReclKeyListPreference.setOnPreferenceChangeListener(this);
+		
+		mThemeListPreference = (ListPreference) findPreference(KEY_THEME_STRING);
+		mThemeListPreference
+				.setSummary(mThemeListPreference.getEntries()[Settings.System
+						.getInt(getContentResolver(), "juelian_button_theme", 0)]);
+		mThemeListPreference.setOnPreferenceChangeListener(this);
 
 	}
 
@@ -199,6 +207,16 @@ public class PreferenceSettings extends PreferenceActivity implements
 					"mipop_choose_what_recl", index);
 			return true;
 		}
+		
+		if (preference == mThemeListPreference) {
+			int index = mThemeListPreference
+					.findIndexOfValue((String) newValue);
+			mThemeListPreference.setSummary(mThemeListPreference
+					.getEntries()[index]);
+			Settings.System.putInt(getContentResolver(), "juelian_button_theme", index);
+			return true;
+		}
+		
 		return false;
 	}
 
