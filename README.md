@@ -4,7 +4,7 @@
 ***
 **基于WAY的开源项目，MIPOP原为ZTE的屏幕助手。**
 
-**本项目在WAY反编译开源的情况下进行功能加强以及修改。**
+**本项目在WAY反编译开源的情况下进行功能加强功能、修复BUG。**
 
 **需要系统签名，需要加载layoutjar库。**
 
@@ -21,6 +21,7 @@
 #####1. 4个按钮长按事件
 #####2. 4个按钮透明度调整
 #####3. 默认键
+#####4. 按钮样式切换
 
 ##截图:
 ![Screenshot](https://raw.githubusercontent.com/SWQJueLian/JuelianMiPopPlus/master/screenshot.png "截图")
