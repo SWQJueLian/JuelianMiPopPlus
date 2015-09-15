@@ -14,6 +14,7 @@
         <item>停止当前程序</item>
         <item>增加音量</item>
         <item>减少音量</item>
+        <item>启动一个指定的软件</item>
     </string-array>
     <string-array name="mi_menu_entries">
         <item>无动作</item>
@@ -21,6 +22,7 @@
         <item>停止当前程序</item>
         <item>增加音量</item>
         <item>减少音量</item>
+        <item>启动一个指定的软件</item>
     </string-array>
     <string-array name="mi_home_entries">
         <item>无动作</item>
@@ -28,6 +30,7 @@
         <item>停止当前程序</item>
         <item>增加音量</item>
         <item>减少音量</item>
+        <item>启动一个指定的软件</item>
     </string-array>
     <string-array name="mi_back_entries">
         <item>无动作</item>
@@ -35,5 +38,6 @@
         <item>停止当前程序</item>
         <item>增加音量</item>
         <item>减少音量</item>
+        <item>启动一个指定的软件</item>
     </string-array>
 </resources>

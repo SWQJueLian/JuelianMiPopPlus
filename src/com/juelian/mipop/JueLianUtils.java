@@ -15,11 +15,13 @@ import android.app.IActivityManager;
 import android.app.Instrumentation;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.media.AudioManager;
 import android.os.RemoteException;
 import android.os.SystemProperties;
+import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -194,6 +196,21 @@ public class JueLianUtils {
 		case 4:
 			audioManager = (AudioManager) mContext.getSystemService(Context.AUDIO_SERVICE);
 			audioManager.adjustVolume(AudioManager.ADJUST_LOWER,AudioManager.FLAG_PLAY_SOUND);
+			break;
+		
+		// start app
+		case 5:
+			SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(mContext);//mContext.getSharedPreferences("appIntent", Context.MODE_WORLD_READABLE);
+			String packNameString  = sp.getString(whatKey+"_packname", "");
+			String clsNameString = sp.getString(whatKey+"_classname", "");
+			if (packNameString.isEmpty() && clsNameString.isEmpty()) {
+				Toast.makeText(mContext, "Пе", 0).show();
+			}else {
+				Intent intent = new Intent();
+				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+				intent.setClassName(packNameString, clsNameString);
+				mContext.startActivity(intent);
+			}
 			break;
 		}
 		

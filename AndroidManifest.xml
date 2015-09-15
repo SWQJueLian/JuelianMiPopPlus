@@ -29,6 +29,14 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="com.juelian.mipop.tools.FilterListViewActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+				<action android:name="juelian.filter.start" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
