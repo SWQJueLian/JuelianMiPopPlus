@@ -40,13 +40,11 @@ public final class R {
         public static final int recent_selector=0x7f020007;
     }
     public static final class id {
-        public static final int all_app_listview=0x7f090000;
-        public static final int app_logo=0x7f090001;
-        public static final int app_name=0x7f090002;
+        public static final int app_logo=0x7f090000;
+        public static final int app_name=0x7f090001;
     }
     public static final class layout {
-        public static final int applist_listview=0x7f040000;
-        public static final int applist_listview_item=0x7f040001;
+        public static final int applist_listview_item=0x7f040000;
     }
     public static final class mipmap {
         public static final int back=0x7f030000;

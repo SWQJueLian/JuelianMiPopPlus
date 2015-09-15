@@ -197,14 +197,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 			Settings.System.putInt(getContentResolver(),
 					"mipop_choose_what_back", index);
 			if (index==5) {
-				/*
-				Intent intent = new Intent();
-				intent.setClassName("com.juelian.mipop", "com.juelian.mipop.tools.FilterListViewActivity");
-				intent.putExtra("key", "mipop_choose_what_back");
-				startActivityForResult(intent, 1);
-				*/
-				//queryFilterAppInfo();
-				showAlertDialog("mipop_choose_what_back");
+				showAlertDialog(mBackKeyListPreference,"mipop_choose_what_back");
 			}
 			return true;
 		}
@@ -217,14 +210,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 			Settings.System.putInt(getContentResolver(),
 					"mipop_choose_what_home", index);
 			if (index==5) {
-				/*
-				Intent intent = new Intent();
-				intent.setClassName("com.juelian.mipop", "com.juelian.mipop.tools.FilterListViewActivity");
-				intent.putExtra("key", "mipop_choose_what_home");
-				startActivityForResult(intent, 2);
-				*/
-				//queryFilterAppInfo();
-				//showAlertDialog("mipop_choose_what_home");
+				showAlertDialog(mHomeKeyListPreference,"mipop_choose_what_home");
 			}
 			return true;
 		}
@@ -236,13 +222,11 @@ public class PreferenceSettings extends PreferenceActivity implements
 					.getEntries()[index]);
 			Settings.System.putInt(getContentResolver(),
 					"mipop_choose_what_menu", index);
-			/*
+			
 			if (index==5) {
-				Intent intent = new Intent("juelian.filter.start");
-				intent.putExtra("key", "mipop_choose_what_menu");
-				startActivityForResult(intent, 3);
+				showAlertDialog(mMenuKeyListPreference,"mipop_choose_what_menu");
 			}
-			*/
+			
 			return true;
 		}
 
@@ -253,14 +237,11 @@ public class PreferenceSettings extends PreferenceActivity implements
 					.getEntries()[index]);
 			Settings.System.putInt(getContentResolver(),
 					"mipop_choose_what_recl", index);
-			/*
+			
 			if (index==5) {
-				Intent intent = new Intent("juelian.filter.start");
-				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				intent.putExtra("key", "mipop_choose_what_recl");
-				startActivityForResult(intent, 4);
+				showAlertDialog(mReclKeyListPreference,"mipop_choose_what_recl");
 			}
-			*/
+			
 			return true;
 		}
 		
@@ -358,7 +339,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 		//Log.d("queryFilterAppInfo", mAppInfos.get(0).getAppLabel());
 	}
 	
-	public void showAlertDialog(final String keyString){
+	public void showAlertDialog(final ListPreference listPreference,final String keyString){
 		AlertDialog.Builder mBuilder = new AlertDialog.Builder(PreferenceSettings.this);
 		//mBuilder.setMessage("sadasdasdadas");
 		mBuilder.setTitle("选择一个选项");
@@ -375,6 +356,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 				editor.putString(keyString+"_packname", appPackNameString);
 				editor.putString(keyString+"_classname", appClassNameString);
 				editor.commit();
+				listPreference.setSummary("启动“"+appNameString+"”");
 				dialog.cancel();
 			}
 		});
