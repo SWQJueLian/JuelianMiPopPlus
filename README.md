@@ -19,9 +19,14 @@
 
 ##加强功能：
 #####1. 4个按钮长按事件
+  - 停止当前程序
+  - 锁屏
+  - 增加音量
+  - 减少音量
+  - 启动一个指定的软件
 #####2. 4个按钮透明度调整
 #####3. 默认键
-#####4. 按钮样式切换
+#####4. 按钮样式切换(两套主题)
 
 ##截图:
 ![Screenshot](https://raw.githubusercontent.com/SWQJueLian/JuelianMiPopPlus/master/screenshot.png "截图")
