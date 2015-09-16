@@ -2,10 +2,6 @@
 
 import java.util.List;
 
-import com.juelian.mipop.R;
-import com.juelian.mipop.R.id;
-import com.juelian.mipop.R.layout;
-
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

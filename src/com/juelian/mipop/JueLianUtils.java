@@ -20,7 +20,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.media.AudioManager;
 import android.os.RemoteException;
-import android.os.SystemProperties;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
 import android.util.Log;
