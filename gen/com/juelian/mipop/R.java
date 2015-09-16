@@ -69,14 +69,15 @@ public final class R {
         public static final int about_category_title=0x7f080012;
         public static final int about_summary=0x7f080014;
         public static final int about_title=0x7f080013;
-        public static final int add_freeze_message_format=0x7f080016;
+        public static final int add_freeze_message_format=0x7f080015;
         public static final int advSettings_category_title=0x7f08000c;
         public static final int alpha_null_waring_msg=0x7f08000b;
         public static final int alpha_summary=0x7f08000a;
         public static final int alpha_waring_msg=0x7f080009;
         public static final int app_name=0x7f080000;
         public static final int button_longclick_category_title=0x7f080011;
-        public static final int loading=0x7f080015;
+        public static final int chooseapp=0x7f080017;
+        public static final int loading=0x7f080019;
         public static final int mipop_button_alpha_dialog_msg=0x7f080008;
         public static final int mipop_button_alpha_title=0x7f080007;
         public static final int mipop_firstkey=0x7f080006;
@@ -89,6 +90,8 @@ public final class R {
         public static final int mipop_switch_summary=0x7f080003;
         public static final int mipop_switch_title=0x7f080001;
         public static final int mipop_theme_title=0x7f080002;
+        public static final int splitchooseapp=0x7f080018;
+        public static final int start=0x7f080016;
     }
     public static final class xml {
         public static final int mipop_settings=0x7f050000;

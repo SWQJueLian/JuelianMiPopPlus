@@ -21,4 +21,8 @@
     <string name="about_category_title">about and copyright</string>
     <string name="about_title">author：绝恋。。</string>
     <string name="about_summary">copyright by 绝恋。。，based on ZTE Mipop,way project</string>
+    <string name="add_freeze_message_format">are you sure use “%1$s” to longClick start app？</string>
+    <string name="start">start</string>
+    <string name="chooseapp">choose an app</string>
+    <string name="splitchooseapp"> a specified software</string>
 </resources>

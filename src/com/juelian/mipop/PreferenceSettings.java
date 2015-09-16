@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-import android.R.anim;
-import android.R.integer;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
@@ -29,7 +27,6 @@ import android.provider.Settings;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
-import android.widget.Space;
 import android.widget.Toast;
 
 import com.juelian.mipop.api.MiPopApplication;
@@ -319,13 +316,13 @@ public class PreferenceSettings extends PreferenceActivity implements
 		if (a!=5) {
 			mListPreference.setSummary(mListPreference.getEntries()[a]);
 		}else {
-			mListPreference.setSummary("启动"+mSharedPreferences.getString(keyString+"_summary", "一个指定的软件"));
+			mListPreference.setSummary(getResources().getString(R.string.start)+mSharedPreferences.getString(keyString+"_summary", getResources().getString(R.string.splitchooseapp)));
 		}
 	}
 	
 	public void showAlertDialog(final ListPreference listPreference,final String keyString){
 		AlertDialog.Builder mBuilder = new AlertDialog.Builder(PreferenceSettings.this);
-		mBuilder.setTitle("选择一个选项");
+		mBuilder.setTitle(R.string.chooseapp);
 		mBuilder.setSingleChoiceItems(new ListViewAdapter(PreferenceSettings.this, mAppInfos), -1, new OnClickListener() {
 			
 			@Override
@@ -339,7 +336,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 				editor.putString(keyString+"_classname", appClassNameString);
 				editor.putString(keyString+"_summary", appNameString);
 				editor.commit();
-				listPreference.setSummary("启动"+appNameString+"");
+				listPreference.setSummary(getResources().getString(R.string.start)+appNameString+"");
 				dialog.cancel();
 			}
 		}).setNegativeButton(android.R.string.cancel, new OnClickListener() {
