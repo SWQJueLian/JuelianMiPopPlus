@@ -75,7 +75,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 		mProgressDialog.setCancelable(false);
 		mProgressDialog.setCanceledOnTouchOutside(false);
 		mProgressDialog.setMessage("正在加载列表中...");
-		pm = getPackageManager();
+		pm = this.getPackageManager();
 		alphaSummaryFormat = getResources().getString(R.string.alpha_summary);
 		mSharedPreferences = getPreferenceManager()
 				.getDefaultSharedPreferences(PreferenceSettings.this);
@@ -284,10 +284,10 @@ public class PreferenceSettings extends PreferenceActivity implements
 	public void queryFilterAppInfo() {
 		Log.d(TAG, "queryFilterAppInfo()");
 		
-		Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
+		Intent mainIntent = new Intent(Intent.ACTION_MAIN);
 		mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
 		
-		resolveInfos = pm.queryIntentActivities(mainIntent, PackageManager.MATCH_DEFAULT_ONLY);
+		resolveInfos = pm.queryIntentActivities(mainIntent, 0);
 		
 		Collections.sort(resolveInfos,new ResolveInfo.DisplayNameComparator(pm));// 排序
 		
