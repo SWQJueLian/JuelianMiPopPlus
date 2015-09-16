@@ -4,7 +4,10 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+import android.R.anim;
+import android.R.integer;
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -13,6 +16,7 @@ import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.graphics.drawable.Drawable;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
@@ -25,6 +29,7 @@ import android.provider.Settings;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
+import android.widget.Space;
 import android.widget.Toast;
 
 import com.juelian.mipop.api.MiPopApplication;
@@ -43,7 +48,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 	private ListPreference mMenuKeyListPreference;
 	private ListPreference mReclKeyListPreference;
 	private ListPreference mThemeListPreference;
-	
+	private ProgressDialog mProgressDialog;
 	private List<AppInfo> mAppInfos =null;
 	private PackageManager pm;
 	List<ResolveInfo> resolveInfos;
@@ -69,6 +74,10 @@ public class PreferenceSettings extends PreferenceActivity implements
 		Log.i(TAG, "onCreate()...");
 		super.onCreate(bundle);
 		addPreferencesFromResource(R.xml.mipop_settings);
+		mProgressDialog = new ProgressDialog(PreferenceSettings.this);
+		mProgressDialog.setCancelable(false);
+		mProgressDialog.setCanceledOnTouchOutside(false);
+		mProgressDialog.setMessage("正在加载列表中...");
 		pm = getPackageManager();
 		alphaSummaryFormat = getResources().getString(R.string.alpha_summary);
 		mSharedPreferences = getPreferenceManager()
@@ -96,31 +105,19 @@ public class PreferenceSettings extends PreferenceActivity implements
 		mMiPopButtonAlpha.setOnPreferenceChangeListener(this);
 
 		mBackKeyListPreference = (ListPreference) findPreference(KEY_BACK_STRING);
-		mBackKeyListPreference
-				.setSummary(mBackKeyListPreference.getEntries()[Settings.System
-						.getInt(getContentResolver(), "mipop_choose_what_back",
-								0)]);
+		setListPreferenceSummary(mBackKeyListPreference, "mipop_choose_what_back");
 		mBackKeyListPreference.setOnPreferenceChangeListener(this);
 
 		mHomeKeyListPreference = (ListPreference) findPreference(KEY_HOME_STRING);
-		mHomeKeyListPreference
-				.setSummary(mHomeKeyListPreference.getEntries()[Settings.System
-						.getInt(getContentResolver(), "mipop_choose_what_home",
-								0)]);
+		setListPreferenceSummary(mHomeKeyListPreference, "mipop_choose_what_home");
 		mHomeKeyListPreference.setOnPreferenceChangeListener(this);
 
 		mMenuKeyListPreference = (ListPreference) findPreference(KEY_MENU_STRING);
-		mMenuKeyListPreference
-				.setSummary(mMenuKeyListPreference.getEntries()[Settings.System
-						.getInt(getContentResolver(), "mipop_choose_what_menu",
-								0)]);
+		setListPreferenceSummary(mMenuKeyListPreference, "mipop_choose_what_menu");
 		mMenuKeyListPreference.setOnPreferenceChangeListener(this);
 
 		mReclKeyListPreference = (ListPreference) findPreference(KEY_RECL_STRING);
-		mReclKeyListPreference
-				.setSummary(mReclKeyListPreference.getEntries()[Settings.System
-						.getInt(getContentResolver(), "mipop_choose_what_recl",
-								0)]);
+		setListPreferenceSummary(mReclKeyListPreference, "mipop_choose_what_recl");
 		mReclKeyListPreference.setOnPreferenceChangeListener(this);
 		
 		mThemeListPreference = (ListPreference) findPreference(KEY_THEME_STRING);
@@ -128,7 +125,6 @@ public class PreferenceSettings extends PreferenceActivity implements
 				.setSummary(mThemeListPreference.getEntries()[Settings.System
 						.getInt(getContentResolver(), "juelian_button_theme", 0)]);
 		mThemeListPreference.setOnPreferenceChangeListener(this);
-		queryFilterAppInfo();
 	}
 
 	public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
@@ -197,7 +193,8 @@ public class PreferenceSettings extends PreferenceActivity implements
 			Settings.System.putInt(getContentResolver(),
 					"mipop_choose_what_back", index);
 			if (index==5) {
-				showAlertDialog(mBackKeyListPreference,"mipop_choose_what_back");
+				//showAlertDialog(mBackKeyListPreference,"mipop_choose_what_back");
+				new myAsyncTask(mBackKeyListPreference, "mipop_choose_what_back").execute();
 			}
 			return true;
 		}
@@ -210,7 +207,8 @@ public class PreferenceSettings extends PreferenceActivity implements
 			Settings.System.putInt(getContentResolver(),
 					"mipop_choose_what_home", index);
 			if (index==5) {
-				showAlertDialog(mHomeKeyListPreference,"mipop_choose_what_home");
+				new myAsyncTask(mHomeKeyListPreference, "mipop_choose_what_home").execute();
+				//showAlertDialog(mHomeKeyListPreference,"mipop_choose_what_home");
 			}
 			return true;
 		}
@@ -224,7 +222,8 @@ public class PreferenceSettings extends PreferenceActivity implements
 					"mipop_choose_what_menu", index);
 			
 			if (index==5) {
-				showAlertDialog(mMenuKeyListPreference,"mipop_choose_what_menu");
+				new myAsyncTask(mMenuKeyListPreference, "mipop_choose_what_menu").execute();
+				//showAlertDialog(mMenuKeyListPreference,"mipop_choose_what_menu");
 			}
 			
 			return true;
@@ -239,7 +238,8 @@ public class PreferenceSettings extends PreferenceActivity implements
 					"mipop_choose_what_recl", index);
 			
 			if (index==5) {
-				showAlertDialog(mReclKeyListPreference,"mipop_choose_what_recl");
+				new myAsyncTask(mReclKeyListPreference, "mipop_choose_what_recl").execute();
+				//showAlertDialog(mReclKeyListPreference,"mipop_choose_what_recl");
 			}
 			
 			return true;
@@ -283,24 +283,6 @@ public class PreferenceSettings extends PreferenceActivity implements
 		setupFloatIcon();
 		setupFullScreen();
 	}
-	/*
-	@Override
-	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		// TODO Auto-generated method stub
-		super.onActivityResult(requestCode, resultCode, data);
-		String appName = data.getStringExtra("labelName");
-		if(requestCode==1 && resultCode==2){
-			mBackKeyListPreference.setSummary(appName);
-		}else if (requestCode==2 && resultCode==2) {
-			mHomeKeyListPreference.setSummary(appName);
-		}else if (requestCode==3 && resultCode==2) {
-			mMenuKeyListPreference.setSummary(appName);
-		}else {
-			mReclKeyListPreference.setSummary(appName);
-		}
-		Log.d(TAG, "result:"+appName);
-	}
-	*/
 	
 	public void queryFilterAppInfo() {
 		Log.d(TAG, "queryFilterAppInfo()");
@@ -308,12 +290,12 @@ public class PreferenceSettings extends PreferenceActivity implements
 		Intent mainIntent = new Intent(Intent.ACTION_MAIN, null);
 		mainIntent.addCategory(Intent.CATEGORY_LAUNCHER);
 		
-		resolveInfos = pm
-				.queryIntentActivities(mainIntent, PackageManager.MATCH_DEFAULT_ONLY);
+		resolveInfos = pm.queryIntentActivities(mainIntent, PackageManager.MATCH_DEFAULT_ONLY);
 		
-		Collections.sort(resolveInfos,
-				new ResolveInfo.DisplayNameComparator(pm));// 排序
+		Collections.sort(resolveInfos,new ResolveInfo.DisplayNameComparator(pm));// 排序
+		
 		List<AppInfo> appInfos = new ArrayList<AppInfo>();
+		
 		if (!appInfos.isEmpty()) {
 			appInfos.clear();
 		}
@@ -321,33 +303,33 @@ public class PreferenceSettings extends PreferenceActivity implements
 			String clsName = reInfo.activityInfo.name; // 获得该应用程序的启动Activity的name
 			String pkgName = reInfo.activityInfo.packageName; // 获得应用程序的包名
 			String appLabel = (String) reInfo.loadLabel(pm); // 获得应用程序的Label
-			Log.d(TAG, "clsName: "+clsName+"; PkgName: "+pkgName+"; applabel: "+appLabel);
-
 			Drawable icon = reInfo.loadIcon(pm); // 获得应用程序图标
-			// 创建一个AppInfo对象，并赋值
 			AppInfo appInfo = new AppInfo();
 			appInfo.setAppLabel(appLabel);
 			appInfo.setPkgName(pkgName);
 			appInfo.setClsName(clsName);
 			appInfo.setAppIcon(icon);
 			appInfos.add(appInfo);
-
-			//Log.d("queryFilterAppInfo", mAppInfos.get(0).getAppLabel());
-
 		}
 		mAppInfos = appInfos;
-		//Log.d("queryFilterAppInfo", mAppInfos.get(0).getAppLabel());
+	}
+	
+	private void setListPreferenceSummary(ListPreference mListPreference,String keyString){
+		int a = Settings.System.getInt(getContentResolver(), keyString,0);
+		if (a!=5) {
+			mListPreference.setSummary(mListPreference.getEntries()[a]);
+		}else {
+			mListPreference.setSummary("启动"+mSharedPreferences.getString(keyString+"_summary", "一个指定的软件"));
+		}
 	}
 	
 	public void showAlertDialog(final ListPreference listPreference,final String keyString){
 		AlertDialog.Builder mBuilder = new AlertDialog.Builder(PreferenceSettings.this);
-		//mBuilder.setMessage("sadasdasdadas");
 		mBuilder.setTitle("选择一个选项");
 		mBuilder.setSingleChoiceItems(new ListViewAdapter(PreferenceSettings.this, mAppInfos), -1, new OnClickListener() {
 			
 			@Override
 			public void onClick(DialogInterface dialog, int which) {
-				// TODO Auto-generated method stub
 				appInfo = mAppInfos.get(which);
 				appPackNameString = appInfo.getPkgName();
 				appClassNameString = appInfo.getClsName();
@@ -355,12 +337,50 @@ public class PreferenceSettings extends PreferenceActivity implements
 				Editor editor = mSharedPreferences.edit();
 				editor.putString(keyString+"_packname", appPackNameString);
 				editor.putString(keyString+"_classname", appClassNameString);
+				editor.putString(keyString+"_summary", appNameString);
 				editor.commit();
-				listPreference.setSummary("启动“"+appNameString+"”");
+				listPreference.setSummary("启动"+appNameString+"");
 				dialog.cancel();
 			}
+		}).setNegativeButton(android.R.string.cancel, new OnClickListener() {
+			
+			@Override
+			public void onClick(DialogInterface dialog, int which) {}
 		});
 		
 		mBuilder.show();
+	}
+	
+	class myAsyncTask extends AsyncTask<Void, Void, Void>{
+		
+		private ListPreference mListPreference;
+		private String keyString;
+		
+		public myAsyncTask(ListPreference mListPreference,String keyString){
+			this.mListPreference = mListPreference;
+			this.keyString = keyString;
+		}
+		
+		@Override
+		protected void onPreExecute() {
+			// TODO Auto-generated method stub
+			mProgressDialog.show();
+			super.onPreExecute();
+		}
+
+		@Override
+		protected Void doInBackground(Void... params) {
+			// TODO Auto-generated method stub
+			queryFilterAppInfo();
+			return null;
+		}
+		
+		@Override
+		protected void onPostExecute(Void result) {
+			// TODO Auto-generated method stub
+			mProgressDialog.cancel();
+			showAlertDialog(mListPreference, keyString);
+			super.onPostExecute(result);
+		}
 	}
 }
