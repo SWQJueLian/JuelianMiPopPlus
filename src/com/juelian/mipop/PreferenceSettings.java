@@ -191,6 +191,9 @@ public class PreferenceSettings extends PreferenceActivity implements
 			if (index == 5) {
 				new myAsyncTask(mBackKeyListPreference,
 						"mipop_choose_what_back").execute();
+			}else {
+				mBackKeyListPreference.setSummary(mBackKeyListPreference
+						.getEntries()[index]);
 			}
 			return true;
 		}
@@ -204,6 +207,9 @@ public class PreferenceSettings extends PreferenceActivity implements
 			if (index == 5) {
 				new myAsyncTask(mHomeKeyListPreference,
 						"mipop_choose_what_home").execute();
+			}else {
+				mHomeKeyListPreference.setSummary(mHomeKeyListPreference
+						.getEntries()[index]);
 			}
 			return true;
 		}
@@ -219,6 +225,9 @@ public class PreferenceSettings extends PreferenceActivity implements
 			if (index == 5) {
 				new myAsyncTask(mMenuKeyListPreference,
 						"mipop_choose_what_menu").execute();
+			}else {
+				mMenuKeyListPreference.setSummary(mMenuKeyListPreference
+						.getEntries()[index]);
 			}
 
 			return true;
@@ -234,6 +243,9 @@ public class PreferenceSettings extends PreferenceActivity implements
 			if (index == 5) {
 				new myAsyncTask(mReclKeyListPreference,
 						"mipop_choose_what_recl").execute();
+			}else {
+				mReclKeyListPreference.setSummary(mReclKeyListPreference
+						.getEntries()[index]);
 			}
 
 			return true;
