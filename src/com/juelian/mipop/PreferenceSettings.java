@@ -185,7 +185,6 @@ public class PreferenceSettings extends PreferenceActivity implements
 		if (preference == mBackKeyListPreference) {
 			int index = mBackKeyListPreference
 					.findIndexOfValue((String) newValue);
-			//setListPreferenceSummary(mBackKeyListPreference,"mipop_choose_what_back");
 			Settings.System.putInt(getContentResolver(),
 					"mipop_choose_what_back", index);
 			if (index == 5) {
@@ -201,7 +200,6 @@ public class PreferenceSettings extends PreferenceActivity implements
 		if (preference == mHomeKeyListPreference) {
 			int index = mHomeKeyListPreference
 					.findIndexOfValue((String) newValue);
-			//setListPreferenceSummary(mHomeKeyListPreference,"mipop_choose_what_home");
 			Settings.System.putInt(getContentResolver(),
 					"mipop_choose_what_home", index);
 			if (index == 5) {
@@ -217,11 +215,8 @@ public class PreferenceSettings extends PreferenceActivity implements
 		if (preference == mMenuKeyListPreference) {
 			int index = mMenuKeyListPreference
 					.findIndexOfValue((String) newValue);
-			//setListPreferenceSummary(mMenuKeyListPreference,"mipop_choose_what_menu");
-
 			Settings.System.putInt(getContentResolver(),
 					"mipop_choose_what_menu", index);
-
 			if (index == 5) {
 				new myAsyncTask(mMenuKeyListPreference,
 						"mipop_choose_what_menu").execute();
@@ -229,17 +224,14 @@ public class PreferenceSettings extends PreferenceActivity implements
 				mMenuKeyListPreference.setSummary(mMenuKeyListPreference
 						.getEntries()[index]);
 			}
-
 			return true;
 		}
 
 		if (preference == mReclKeyListPreference) {
 			int index = mReclKeyListPreference
 					.findIndexOfValue((String) newValue);
-			//setListPreferenceSummary(mReclKeyListPreference,"mipop_choose_what_recl");
 			Settings.System.putInt(getContentResolver(),
 					"mipop_choose_what_recl", index);
-
 			if (index == 5) {
 				new myAsyncTask(mReclKeyListPreference,
 						"mipop_choose_what_recl").execute();
@@ -247,7 +239,6 @@ public class PreferenceSettings extends PreferenceActivity implements
 				mReclKeyListPreference.setSummary(mReclKeyListPreference
 						.getEntries()[index]);
 			}
-
 			return true;
 		}
 		
@@ -320,17 +311,21 @@ public class PreferenceSettings extends PreferenceActivity implements
 		mAppInfos = appInfos;
 	}
 	
-	private void setListPreferenceSummary(ListPreference mListPreference,String keyString){
-		String summarylabel = mSharedPreferences.getString(keyString+"_summary","");
+	private void setListPreferenceSummary(ListPreference listPreference,String keyString){
 		int a = Settings.System.getInt(getContentResolver(), keyString,0);
 		if (a==5) {
-			if (summarylabel.isEmpty()) {
-				mListPreference.setSummary(getResources().getString(R.string.not_select_app));
-			}else {
-				mListPreference.setSummary(getResources().getString(R.string.start)+" \""+summarylabel+" \"");
-			}
+			cond_summary(listPreference, keyString);
 		}else {
-			mListPreference.setSummary(mListPreference.getEntries()[a]);
+			listPreference.setSummary(listPreference.getEntries()[a]);
+		}
+	}
+	
+	public void cond_summary(ListPreference listPreference,String keyString){
+		String summarylabel = mSharedPreferences.getString(keyString+"_summary","");
+		if (summarylabel.isEmpty()) {
+			listPreference.setSummary(getResources().getString(R.string.not_select_app));
+		}else {
+			listPreference.setSummary(getResources().getString(R.string.start)+" \""+summarylabel+" \"");
 		}
 	}
 	
@@ -363,13 +358,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 		mBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
 			@Override
 			public void onCancel(DialogInterface dialog) {
-				// TODO Auto-generated method stub
-				String summarylabel = mSharedPreferences.getString(keyString+"_summary","");
-				if (summarylabel.isEmpty()) {
-					listPreference.setSummary(getResources().getString(R.string.not_select_app));
-				}else {
-					listPreference.setSummary(getResources().getString(R.string.start)+" \""+summarylabel+" \"");
-				}
+				cond_summary(listPreference, keyString);
 			}
 		});
 		
