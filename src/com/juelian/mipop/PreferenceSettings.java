@@ -315,7 +315,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 			if (summarylabel.isEmpty()) {
 				mListPreference.setSummary(getResources().getString(R.string.not_select_app));
 			}else {
-				mListPreference.setSummary(getResources().getString(R.string.start)+summarylabel);
+				mListPreference.setSummary(getResources().getString(R.string.start)+" \""+summarylabel+" \"");
 			}
 		}else {
 			mListPreference.setSummary(mListPreference.getEntries()[a]);
@@ -338,7 +338,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 				editor.putString(keyString+"_classname", appClassNameString);
 				editor.putString(keyString+"_summary", appNameString);
 				editor.commit();
-				listPreference.setSummary(getResources().getString(R.string.start)+appNameString+"");
+				listPreference.setSummary(getResources().getString(R.string.start)+" \""+appNameString+" \"");
 				dialog.cancel();
 			}
 		}).setNegativeButton(android.R.string.cancel, new OnClickListener() {
@@ -356,7 +356,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 				if (summarylabel.isEmpty()) {
 					listPreference.setSummary(getResources().getString(R.string.not_select_app));
 				}else {
-					listPreference.setSummary(getResources().getString(R.string.start)+summarylabel);
+					listPreference.setSummary(getResources().getString(R.string.start)+" \""+summarylabel+" \"");
 				}
 			}
 		});
