@@ -74,7 +74,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 		mProgressDialog = new ProgressDialog(PreferenceSettings.this);
 		mProgressDialog.setCancelable(false);
 		mProgressDialog.setCanceledOnTouchOutside(false);
-		mProgressDialog.setMessage("正在加载列表中...");
+		mProgressDialog.setMessage(getResources().getString(R.string.loading));
 		pm = this.getPackageManager();
 		alphaSummaryFormat = getResources().getString(R.string.alpha_summary);
 		mSharedPreferences = getPreferenceManager()
@@ -185,13 +185,12 @@ public class PreferenceSettings extends PreferenceActivity implements
 		if (preference == mBackKeyListPreference) {
 			int index = mBackKeyListPreference
 					.findIndexOfValue((String) newValue);
-			mBackKeyListPreference.setSummary(mBackKeyListPreference
-					.getEntries()[index]);
+			//setListPreferenceSummary(mBackKeyListPreference,"mipop_choose_what_back");
 			Settings.System.putInt(getContentResolver(),
 					"mipop_choose_what_back", index);
-			if (index==5) {
-				//showAlertDialog(mBackKeyListPreference,"mipop_choose_what_back");
-				new myAsyncTask(mBackKeyListPreference, "mipop_choose_what_back").execute();
+			if (index == 5) {
+				new myAsyncTask(mBackKeyListPreference,
+						"mipop_choose_what_back").execute();
 			}
 			return true;
 		}
@@ -199,13 +198,12 @@ public class PreferenceSettings extends PreferenceActivity implements
 		if (preference == mHomeKeyListPreference) {
 			int index = mHomeKeyListPreference
 					.findIndexOfValue((String) newValue);
-			mHomeKeyListPreference.setSummary(mHomeKeyListPreference
-					.getEntries()[index]);
+			//setListPreferenceSummary(mHomeKeyListPreference,"mipop_choose_what_home");
 			Settings.System.putInt(getContentResolver(),
 					"mipop_choose_what_home", index);
-			if (index==5) {
-				new myAsyncTask(mHomeKeyListPreference, "mipop_choose_what_home").execute();
-				//showAlertDialog(mHomeKeyListPreference,"mipop_choose_what_home");
+			if (index == 5) {
+				new myAsyncTask(mHomeKeyListPreference,
+						"mipop_choose_what_home").execute();
 			}
 			return true;
 		}
@@ -213,32 +211,31 @@ public class PreferenceSettings extends PreferenceActivity implements
 		if (preference == mMenuKeyListPreference) {
 			int index = mMenuKeyListPreference
 					.findIndexOfValue((String) newValue);
-			mMenuKeyListPreference.setSummary(mMenuKeyListPreference
-					.getEntries()[index]);
+			//setListPreferenceSummary(mMenuKeyListPreference,"mipop_choose_what_menu");
+
 			Settings.System.putInt(getContentResolver(),
 					"mipop_choose_what_menu", index);
-			
-			if (index==5) {
-				new myAsyncTask(mMenuKeyListPreference, "mipop_choose_what_menu").execute();
-				//showAlertDialog(mMenuKeyListPreference,"mipop_choose_what_menu");
+
+			if (index == 5) {
+				new myAsyncTask(mMenuKeyListPreference,
+						"mipop_choose_what_menu").execute();
 			}
-			
+
 			return true;
 		}
 
 		if (preference == mReclKeyListPreference) {
 			int index = mReclKeyListPreference
 					.findIndexOfValue((String) newValue);
-			mReclKeyListPreference.setSummary(mReclKeyListPreference
-					.getEntries()[index]);
+			//setListPreferenceSummary(mReclKeyListPreference,"mipop_choose_what_recl");
 			Settings.System.putInt(getContentResolver(),
 					"mipop_choose_what_recl", index);
-			
-			if (index==5) {
-				new myAsyncTask(mReclKeyListPreference, "mipop_choose_what_recl").execute();
-				//showAlertDialog(mReclKeyListPreference,"mipop_choose_what_recl");
+
+			if (index == 5) {
+				new myAsyncTask(mReclKeyListPreference,
+						"mipop_choose_what_recl").execute();
 			}
-			
+
 			return true;
 		}
 		
@@ -312,11 +309,16 @@ public class PreferenceSettings extends PreferenceActivity implements
 	}
 	
 	private void setListPreferenceSummary(ListPreference mListPreference,String keyString){
+		String summarylabel = mSharedPreferences.getString(keyString+"_summary","");
 		int a = Settings.System.getInt(getContentResolver(), keyString,0);
-		if (a!=5) {
-			mListPreference.setSummary(mListPreference.getEntries()[a]);
+		if (a==5) {
+			if (summarylabel.isEmpty()) {
+				mListPreference.setSummary(getResources().getString(R.string.not_select_app));
+			}else {
+				mListPreference.setSummary(getResources().getString(R.string.start)+summarylabel);
+			}
 		}else {
-			mListPreference.setSummary(getResources().getString(R.string.start)+mSharedPreferences.getString(keyString+"_summary", getResources().getString(R.string.splitchooseapp)));
+			mListPreference.setSummary(mListPreference.getEntries()[a]);
 		}
 	}
 	
@@ -340,9 +342,23 @@ public class PreferenceSettings extends PreferenceActivity implements
 				dialog.cancel();
 			}
 		}).setNegativeButton(android.R.string.cancel, new OnClickListener() {
-			
 			@Override
-			public void onClick(DialogInterface dialog, int which) {}
+			public void onClick(DialogInterface dialog, int which) {
+				dialog.cancel();
+			}
+		});
+		
+		mBuilder.setOnCancelListener(new DialogInterface.OnCancelListener() {
+			@Override
+			public void onCancel(DialogInterface dialog) {
+				// TODO Auto-generated method stub
+				String summarylabel = mSharedPreferences.getString(keyString+"_summary","");
+				if (summarylabel.isEmpty()) {
+					listPreference.setSummary(getResources().getString(R.string.not_select_app));
+				}else {
+					listPreference.setSummary(getResources().getString(R.string.start)+summarylabel);
+				}
+			}
 		});
 		
 		mBuilder.show();

@@ -90,7 +90,7 @@ public final class R {
         public static final int mipop_switch_summary=0x7f080003;
         public static final int mipop_switch_title=0x7f080001;
         public static final int mipop_theme_title=0x7f080002;
-        public static final int splitchooseapp=0x7f080018;
+        public static final int not_select_app=0x7f080018;
         public static final int start=0x7f080016;
     }
     public static final class xml {

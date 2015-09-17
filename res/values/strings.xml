@@ -24,5 +24,5 @@
     <string name="add_freeze_message_format">are you sure use “%1$s” to longClick start app？</string>
     <string name="start">start</string>
     <string name="chooseapp">choose an app</string>
-    <string name="splitchooseapp"> a specified software</string>
+    <string name="not_select_app">not specified app</string>
 </resources>

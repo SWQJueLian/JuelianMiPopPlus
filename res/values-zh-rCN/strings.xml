@@ -25,5 +25,5 @@
     <string name="add_freeze_message_format">你确定要将“%1$s”设置为长按启动应用吗？</string>
     <string name="start">启动</string>
     <string name="chooseapp">选择要启动的软件</string>
-    <string name="splitchooseapp">一个指定的软件</string>
+    <string name="not_select_app">未指定要启动的软件</string>
 </resources>
