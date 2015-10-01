@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string name="app_name">屏幕助手</string>
     <string name="mipop_switch_title">屏幕助手</string>
     <string name="mipop_theme_title">按钮样式</string>
@@ -26,4 +27,5 @@
     <string name="start">启动</string>
     <string name="chooseapp">选择要启动的软件</string>
     <string name="not_select_app">未指定要启动的软件</string>
+
 </resources>
