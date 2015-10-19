@@ -32,6 +32,7 @@ public class JueLianUtils {
 
 	public static Context mContext = MeterBase.mContext;
 	private static AudioManager audioManager;
+	private static boolean isEnable = false;
 	
 	public static int getAlpha() {
 		return Settings.System.getInt(mContext.getContentResolver(),
@@ -210,6 +211,18 @@ public class JueLianUtils {
 				intent.setClassName(packNameString, clsNameString);
 				mContext.startActivity(intent);
 			}
+			break;
+			
+		case 6:
+			Intent localIntent = new Intent("miui.intent.action.TOGGLE_TORCH");
+			if (!isEnable) {//false
+				localIntent.putExtra("miui.intent.extra.IS_ENABLE", true);
+				isEnable = true;
+			}else {//true
+				localIntent.putExtra("miui.intent.extra.IS_ENABLE", false);
+				isEnable = false;
+			}
+			mContext.sendBroadcast(localIntent);
 			break;
 		}
 		
