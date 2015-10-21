@@ -24,6 +24,7 @@ import android.preference.Preference.OnPreferenceChangeListener;
 import android.preference.PreferenceActivity;
 import android.preference.PreferenceScreen;
 import android.provider.Settings;
+import android.text.InputFilter;
 import android.text.InputType;
 import android.text.TextUtils;
 import android.util.Log;
@@ -97,6 +98,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 		mMiPopButtonAlpha.getEditText().setHint(JueLianUtils.getAlpha() + "");
 		mMiPopButtonAlpha
 				.setDialogMessage(R.string.mipop_button_alpha_dialog_msg);
+		mMiPopButtonAlpha.getEditText().setFilters(new InputFilter[]{new InputFilter.LengthFilter(3)});
 		mMiPopButtonAlpha.setSummary(String.format(alphaSummaryFormat,
 				JueLianUtils.getAlpha()));
 		mMiPopButtonAlpha.setOnPreferenceChangeListener(this);
