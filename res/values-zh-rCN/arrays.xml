@@ -16,6 +16,8 @@
         <item>减少音量</item>
         <item>启动一个指定的软件</item>
         <item>启动手电筒</item>
+        <item>屏幕截图</item>
+        <item>启用/关闭智能分屏</item>
     </string-array>
     <string-array name="mi_menu_entries">
         <item>无动作</item>
@@ -25,6 +27,8 @@
         <item>减少音量</item>
         <item>启动一个指定的软件</item>
         <item>启动手电筒</item>
+		<item>屏幕截图</item>
+        <item>启用/关闭智能分屏</item>
     </string-array>
     <string-array name="mi_home_entries">
         <item>无动作</item>
@@ -34,6 +38,8 @@
         <item>减少音量</item>
         <item>启动一个指定的软件</item>
         <item>启动手电筒</item>
+		<item>屏幕截图</item>
+        <item>启用/关闭智能分屏</item>
     </string-array>
     <string-array name="mi_back_entries">
         <item>无动作</item>
@@ -43,5 +49,7 @@
         <item>减少音量</item>
         <item>启动一个指定的软件</item>
         <item>启动手电筒</item>
+		<item>屏幕截图</item>
+        <item>启用/关闭智能分屏</item>
     </string-array>
 </resources>

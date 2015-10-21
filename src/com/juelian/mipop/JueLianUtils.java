@@ -129,6 +129,9 @@ public class JueLianUtils {
 		return Settings.System.getInt(context.getContentResolver(), strKey,
 				defValues);
 	}
+	public static void setSystemInt(Context context,String strKey,int values){
+		Settings.System.putInt(context.getContentResolver(), strKey, values);
+	}
 	/*
 	public static boolean isMIUI(){
 		return !SystemProperties.get("ro.miui.ui.version.code").isEmpty();
@@ -223,6 +226,20 @@ public class JueLianUtils {
 				isEnable = false;
 			}
 			mContext.sendBroadcast(localIntent);
+			break;
+			
+		case 7:
+			Intent intent = new Intent("android.intent.action.CropImage");
+			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			mContext.startActivity(intent);
+			break;
+		case 8:
+			String keyString = "ss_s_btn_enabled";
+			if (getSystemInt(mContext, keyString, 0) == 0) {
+				setSystemInt(mContext, keyString, 1);
+			} else {
+				setSystemInt(mContext, keyString, 0);
+			}
 			break;
 		}
 		
