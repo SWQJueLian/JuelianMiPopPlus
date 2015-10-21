@@ -31,3 +31,8 @@
 
 ##截图:
 ![Screenshot](https://raw.githubusercontent.com/SWQJueLian/JuelianMiPopPlus/master/screenshot.png "截图")
+
+#开源协议
+**Apache 2.0**
+> 
+[http://www.apache.org/licenses/LICENSE-2.0](http://www.apache.org/licenses/LICENSE-2.0)
