@@ -23,6 +23,7 @@
     <string name="about_summary">copyright by 绝恋。。，based on ZTE Mipop,way project</string>
     <string name="add_freeze_message_format">are you sure use “%1$s” to longClick start app？</string>
     <string name="start">start</string>
+    <string name="loading">loading...</string>
     <string name="chooseapp">choose an app</string>
     <string name="not_select_app">not specified app</string>
 </resources>

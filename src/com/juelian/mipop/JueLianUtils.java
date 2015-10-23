@@ -209,6 +209,8 @@ public class JueLianUtils {
 			if (packNameString.isEmpty() && clsNameString.isEmpty()) {
 				Toast.makeText(mContext, "Пе", 0).show();
 			}else {
+				Log.d("mijl-->", "mipop-packName:"+packNameString);
+				Log.d("mijl-->", "mipop-clsName:"+packNameString);
 				Intent intent = new Intent();
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				intent.setClassName(packNameString, clsNameString);
@@ -227,7 +229,6 @@ public class JueLianUtils {
 			}
 			mContext.sendBroadcast(localIntent);
 			break;
-			
 		case 7:
 			Intent intent = new Intent("android.intent.action.CropImage");
 			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
