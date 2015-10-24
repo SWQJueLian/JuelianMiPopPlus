@@ -229,7 +229,6 @@ public class JueLianUtils {
 			}
 			mContext.sendBroadcast(localIntent);
 			break;
-			
 		case 7:
 			Intent intent = new Intent("android.intent.action.CropImage");
 			intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
