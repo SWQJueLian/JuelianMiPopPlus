@@ -242,6 +242,12 @@ public class JueLianUtils {
 				setSystemInt(mContext, keyString, 0);
 			}
 			break;
+		case 9:
+			Intent localIntent1 = new Intent("android.intent.action.MAIN");
+			localIntent1.setClassName("com.haxor", "com.haxor.ScreenFilter");
+			localIntent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			mContext.startActivity(localIntent1);
+			break;
 		}
 		
 	}

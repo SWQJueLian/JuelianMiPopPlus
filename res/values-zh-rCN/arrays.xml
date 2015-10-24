@@ -18,6 +18,7 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
+        <item>9</item>
     </string-array>
     <string-array name="mi_menu_values">
         <item>0</item>
@@ -29,6 +30,7 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
+        <item>9</item>
     </string-array>
     <string-array name="mi_home_values">
         <item>0</item>
@@ -40,6 +42,7 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
+        <item>9</item>
     </string-array>
     <string-array name="mi_back_values">
         <item>0</item>
@@ -51,14 +54,15 @@
         <item>6</item>
         <item>7</item>
         <item>8</item>
+        <item>9</item>
     </string-array>
     <string-array name="mi_fristkey_entries">
         <item>返回键(默认)</item>
         <item>Home键</item>
     </string-array>
     <string-array name="mi_theme_entries">
-        <item>默认</item>
-        <item>MIUI风格</item>
+        <item>样式一</item>
+        <item>样式二</item>
     </string-array>
     <string-array name="mi_recl_entries">
         <item>无动作</item>
@@ -70,6 +74,7 @@
         <item>启动手电筒</item>
         <item>屏幕截图</item>
         <item>启用/关闭智能分屏</item>
+        <item>启用/关闭护目镜</item>
     </string-array>
     <string-array name="mi_menu_entries">
         <item>无动作</item>
@@ -81,6 +86,7 @@
         <item>启动手电筒</item>
 		<item>屏幕截图</item>
         <item>启用/关闭智能分屏</item>
+        <item>启用/关闭护目镜</item>
     </string-array>
     <string-array name="mi_home_entries">
         <item>无动作</item>
@@ -92,6 +98,7 @@
         <item>启动手电筒</item>
 		<item>屏幕截图</item>
         <item>启用/关闭智能分屏</item>
+        <item>启用/关闭护目镜</item>
     </string-array>
     <string-array name="mi_back_entries">
         <item>无动作</item>
@@ -103,5 +110,6 @@
         <item>启动手电筒</item>
 		<item>屏幕截图</item>
         <item>启用/关闭智能分屏</item>
+        <item>启用/关闭护目镜</item>
     </string-array>
 </resources>
