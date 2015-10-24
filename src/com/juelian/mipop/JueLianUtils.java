@@ -207,7 +207,7 @@ public class JueLianUtils {
 			String packNameString  = sp.getString(whatKey+"_packname", "");
 			String clsNameString = sp.getString(whatKey+"_classname", "");
 			if (packNameString.isEmpty() && clsNameString.isEmpty()) {
-				Toast.makeText(mContext, "Пе", 0).show();
+				Toast.makeText(mContext, R.string.not_select_app, 0).show();
 			}else {
 				Log.d("mijl-->", "mipop-packName:"+packNameString);
 				Log.d("mijl-->", "mipop-clsName:"+packNameString);
