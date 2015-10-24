@@ -13,9 +13,11 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
+import android.database.ContentObserver;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -86,6 +88,8 @@ public class PreferenceSettings extends PreferenceActivity implements
 						.getInt(getContentResolver(), "FirstKey", 0)]);
 		mFirstKeyListPreference.setOnPreferenceChangeListener(this);
 		mMiPop = ((CheckBoxPreference) findPreference(KEY_SWITCH_STRING));
+		mMiPop.setChecked(Settings.System.getInt(getContentResolver(), "juelian_mipop_on",0)==1 ? true : false);
+		
 		mFullScreen = ((CheckBoxPreference) findPreference(KEY_FULLSCREEN_STRING));
 		if (!mSharedPreferences.getBoolean(KEY_FULLSCREEN_STRING, false)) {
 			getPreferenceScreen().removePreference(
@@ -131,11 +135,13 @@ public class PreferenceSettings extends PreferenceActivity implements
 		Log.i(TAG, "onPreferenceTreeClick");
 		if (preference == mMiPop) {
 			Log.i(TAG, "onPreferenceTreeClick preference == mMiPop");
+			updateCheckState(mMiPop.isChecked());
+			/*
 			if (mMiPop.isChecked()) {
 				MiPopApplication.showMipop();
 			} else {
 				MiPopApplication.hideMipop();
-			}
+			}*/
 		} else if (preference == mFullScreen) {
 			Log.i(TAG, "onPreferenceTreeClick preference == mFullScreen");
 			if (mFullScreen.isChecked()) {
@@ -254,6 +260,14 @@ public class PreferenceSettings extends PreferenceActivity implements
 		}
 		
 		return false;
+	}
+	
+	public void updateCheckState(boolean flag){
+		if (flag) {
+			Settings.System.putInt(getContentResolver(), "juelian_mipop_on", 1);
+		}else {
+			Settings.System.putInt(getContentResolver(), "juelian_mipop_on", 0);
+		}
 	}
 
 	private void setupFloatIcon() {

@@ -38,6 +38,14 @@ public class MiPopApplication extends Application {
 			switchTheme();
 		}
 	};
+	
+	  private ContentObserver mMipopOn = new ContentObserver(new Handler())
+	  {
+	    public void onChange(boolean paramAnonymousBoolean)
+	    {
+	    	switchMipop();
+	    }
+	  };
 
 	public static void hideMipop() {
 		MeterBase.MeterMap.get(MeterHome.NAME).setVisibility(View.GONE);
@@ -74,6 +82,10 @@ public class MiPopApplication extends Application {
 		getApplicationContext().getContentResolver().registerContentObserver(
 				Settings.System.getUriFor("juelian_button_theme"), false,
 				this.mTheme);
+		getApplicationContext().getContentResolver().registerContentObserver(
+				Settings.System.getUriFor("juelian_mipop_on"), true,
+				this.mMipopOn);
+		switchMipop();
 	}
 
 	/*
@@ -106,6 +118,16 @@ public class MiPopApplication extends Application {
 		}
 	}
 	*/
+
+	public void switchMipop(){
+		int i = Settings.System.getInt(getApplicationContext()
+				.getContentResolver(), "juelian_mipop_on", 0);
+		if (i==0) {
+			hideMipop();
+		}else {
+			showMipop();
+		}
+	}
 
 	public void setAlphas() {
 		int i = Settings.System.getInt(getApplicationContext()
