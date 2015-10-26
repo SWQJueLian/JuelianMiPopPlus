@@ -8,43 +8,7 @@
         <item>0</item>
         <item>1</item>
     </string-array>
-    <string-array name="mi_recl_values">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-    </string-array>
-    <string-array name="mi_menu_values">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-    </string-array>
-    <string-array name="mi_home_values">
-        <item>0</item>
-        <item>1</item>
-        <item>2</item>
-        <item>3</item>
-        <item>4</item>
-        <item>5</item>
-        <item>6</item>
-        <item>7</item>
-        <item>8</item>
-        <item>9</item>
-    </string-array>
-    <string-array name="mi_back_values">
+    <string-array name="mi_lc_values">
         <item>0</item>
         <item>1</item>
         <item>2</item>
@@ -64,51 +28,15 @@
         <item>样式一</item>
         <item>样式二</item>
     </string-array>
-    <string-array name="mi_recl_entries">
+    <string-array name="mi_lc_entries">
         <item>无动作</item>
         <item>锁屏</item>
         <item>停止当前程序</item>
         <item>增加音量</item>
         <item>减少音量</item>
         <item>启动一个指定的软件</item>
-        <item>启动手电筒</item>
+        <item>启动/关闭手电筒</item>
         <item>屏幕截图</item>
-        <item>启用/关闭智能分屏</item>
-        <item>启用/关闭护目镜</item>
-    </string-array>
-    <string-array name="mi_menu_entries">
-        <item>无动作</item>
-        <item>锁屏</item>
-        <item>停止当前程序</item>
-        <item>增加音量</item>
-        <item>减少音量</item>
-        <item>启动一个指定的软件</item>
-        <item>启动手电筒</item>
-		<item>屏幕截图</item>
-        <item>启用/关闭智能分屏</item>
-        <item>启用/关闭护目镜</item>
-    </string-array>
-    <string-array name="mi_home_entries">
-        <item>无动作</item>
-        <item>锁屏</item>
-        <item>停止当前程序</item>
-        <item>增加音量</item>
-        <item>减少音量</item>
-        <item>启动一个指定的软件</item>
-        <item>启动手电筒</item>
-		<item>屏幕截图</item>
-        <item>启用/关闭智能分屏</item>
-        <item>启用/关闭护目镜</item>
-    </string-array>
-    <string-array name="mi_back_entries">
-        <item>无动作</item>
-        <item>锁屏</item>
-        <item>停止当前程序</item>
-        <item>增加音量</item>
-        <item>减少音量</item>
-        <item>启动一个指定的软件</item>
-        <item>启动手电筒</item>
-		<item>屏幕截图</item>
         <item>启用/关闭智能分屏</item>
         <item>启用/关闭护目镜</item>
     </string-array>

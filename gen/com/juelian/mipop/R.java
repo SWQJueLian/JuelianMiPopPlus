@@ -9,17 +9,11 @@ package com.juelian.mipop;
 
 public final class R {
     public static final class array {
-        public static final int mi_back_entries=0x7f06000b;
-        public static final int mi_back_values=0x7f060005;
-        public static final int mi_fristkey_entries=0x7f060006;
+        public static final int mi_fristkey_entries=0x7f060003;
         public static final int mi_fristkey_values=0x7f060000;
-        public static final int mi_home_entries=0x7f06000a;
-        public static final int mi_home_values=0x7f060004;
-        public static final int mi_menu_entries=0x7f060009;
-        public static final int mi_menu_values=0x7f060003;
-        public static final int mi_recl_entries=0x7f060008;
-        public static final int mi_recl_values=0x7f060002;
-        public static final int mi_theme_entries=0x7f060007;
+        public static final int mi_lc_entries=0x7f060005;
+        public static final int mi_lc_values=0x7f060002;
+        public static final int mi_theme_entries=0x7f060004;
         public static final int mi_theme_values=0x7f060001;
     }
     public static final class attr {

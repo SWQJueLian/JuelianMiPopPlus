@@ -27,26 +27,26 @@
     <PreferenceCategory android:title="@string/button_longclick_category_title" />
     <ListPreference
         android:defaultValue="0"
-        android:entries="@array/mi_back_entries"
-        android:entryValues="@array/mi_back_values"
+        android:entries="@array/mi_lc_entries"
+        android:entryValues="@array/mi_lc_values"
         android:key="backkey"
         android:title="@string/mipop_keyback" />
     <ListPreference
         android:defaultValue="0"
-        android:entries="@array/mi_home_entries"
-        android:entryValues="@array/mi_home_values"
+        android:entries="@array/mi_lc_entries"
+        android:entryValues="@array/mi_lc_values"
         android:key="homekey"
         android:title="@string/mipop_keyhome" />
     <ListPreference
         android:defaultValue="0"
-        android:entries="@array/mi_menu_entries"
-        android:entryValues="@array/mi_menu_values"
+        android:entries="@array/mi_lc_entries"
+        android:entryValues="@array/mi_lc_values"
         android:key="menukey"
         android:title="@string/mipop_keymenu" />
     <ListPreference
         android:defaultValue="0"
-        android:entries="@array/mi_recl_entries"
-        android:entryValues="@array/mi_recl_values"
+        android:entries="@array/mi_lc_entries"
+        android:entryValues="@array/mi_lc_values"
         android:key="reclkey"
         android:title="@string/mipop_keyrecl" />
     <PreferenceCategory android:title="@string/advSettings_category_title" />
