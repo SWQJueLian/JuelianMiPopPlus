@@ -19,7 +19,7 @@
     <string name="mipop_keyrecl">Task Button</string>
     <string name="button_longclick_category_title">Button LongClick</string>
     <string name="about_category_title">about and copyright</string>
-    <string name="about_title">author：绝恋。。</string>
+    <string name="about_title">author：SWQJueLian。。</string>
     <string name="about_summary">Github project: https://github.com/SWQJueLian/JuelianMiPopPlus</string>
     <string name="add_freeze_message_format">are you sure use “%1$s” to longClick start app？</string>
     <string name="start">start</string>

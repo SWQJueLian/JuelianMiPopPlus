@@ -7,6 +7,7 @@ import android.provider.Settings;
 import android.util.Log;
 import android.view.View;
 
+import com.juelian.mipop.JueLianUtils;
 import com.juelian.mipop.R;
 import com.juelian.mipop.animation.AnimationParking;
 import com.juelian.mipop.animation.AnimationTransparent;
@@ -73,11 +74,12 @@ public class MiPopApplication extends Application {
 		//switchFirstKey();
 		switchTheme();
 		setAlphas();
+		switchMipop();
 		getApplicationContext().getContentResolver().registerContentObserver(
-				Settings.System.getUriFor("FirstKey"), false,
+				Settings.System.getUriFor(JueLianUtils.FIRKEY), false,
 				this.mFirstKeyObserver);
 		getApplicationContext().getContentResolver().registerContentObserver(
-				Settings.System.getUriFor("juelian_button_alpha"), false,
+				Settings.System.getUriFor("juelian_button_alpha_md"), false,
 				this.mButtonAlpha);
 		getApplicationContext().getContentResolver().registerContentObserver(
 				Settings.System.getUriFor("juelian_button_theme"), false,
@@ -85,7 +87,6 @@ public class MiPopApplication extends Application {
 		getApplicationContext().getContentResolver().registerContentObserver(
 				Settings.System.getUriFor("juelian_mipop_on"), true,
 				this.mMipopOn);
-		switchMipop();
 	}
 
 	/*
@@ -121,7 +122,7 @@ public class MiPopApplication extends Application {
 
 	public void switchMipop(){
 		int i = Settings.System.getInt(getApplicationContext()
-				.getContentResolver(), "juelian_mipop_on", 0);
+				.getContentResolver(), "juelian_mipop_on", 1);
 		if (i==0) {
 			hideMipop();
 		}else {
@@ -131,7 +132,7 @@ public class MiPopApplication extends Application {
 
 	public void setAlphas() {
 		int i = Settings.System.getInt(getApplicationContext()
-				.getContentResolver(), "juelian_button_alpha", 255);
+				.getContentResolver(), "juelian_button_alpha_md", 255);
 		((MeterBase) MeterBase.MeterMap.get(MeterBack.NAME)).setAlpha(i);
 		((MeterBase) MeterBase.MeterMap.get(MeterHome.NAME)).setAlpha(i);
 		((MeterBase) MeterBase.MeterMap.get(MeterMenu.NAME)).setAlpha(i);
@@ -144,7 +145,7 @@ public class MiPopApplication extends Application {
 		
 		case 0:
 			if (Settings.System.getInt(
-					getApplicationContext().getContentResolver(), "FirstKey", 0) == 1) {
+					getApplicationContext().getContentResolver(), JueLianUtils.FIRKEY, 0) == 1) {
 				// back use home
 				MeterBase.MeterMap.get(MeterBack.NAME).setImageResource(
 						R.drawable.home_selector);
@@ -177,7 +178,7 @@ public class MiPopApplication extends Application {
 			
 		case 1:
 			if (Settings.System.getInt(
-					getApplicationContext().getContentResolver(), "FirstKey", 0) == 1) {
+					getApplicationContext().getContentResolver(), JueLianUtils.FIRKEY, 0) == 1) {
 				// back use home
 				MeterBase.MeterMap.get(MeterBack.NAME).setImageResource(
 						R.drawable.mhome_selector);

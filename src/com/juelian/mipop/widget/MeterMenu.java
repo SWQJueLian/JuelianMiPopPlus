@@ -38,6 +38,6 @@ public class MeterMenu extends MeterBase {
 
 	public void LongClick() {
 		Log.i("juelian", "menu long click");
-		JueLianUtils.switchFunction("mipop_choose_what_menu");
+		JueLianUtils.switchFunction(JueLianUtils.MCWM);
 	}
 }

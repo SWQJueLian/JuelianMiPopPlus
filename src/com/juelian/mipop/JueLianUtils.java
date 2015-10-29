@@ -34,9 +34,15 @@ public class JueLianUtils {
 	private static AudioManager audioManager;
 	private static boolean isEnable = false;
 	
+	public static final String MCWB = "mipop_choose_what_back";
+	public static final String MCWH = "mipop_choose_what_home";
+	public static final String MCWM = "mipop_choose_what_menu";
+	public static final String MCWR = "mipop_choose_what_recl";
+	public static final String FIRKEY = "firkey";
+	
 	public static int getAlpha() {
 		return Settings.System.getInt(mContext.getContentResolver(),
-				"juelian_button_alpha", 255);
+				"juelian_button_alpha_md", 255);
 	}
 
 	public static ArrayList<String> getWhiteList() {
@@ -138,12 +144,12 @@ public class JueLianUtils {
 	}
 	*/
 	public static void switchFunction() {
-		int firstkey = getSystemInt(mContext, "FirstKey", 0);
+		int firstkey = getSystemInt(mContext, FIRKEY, 0);
 		String whatKey = "";
 		if (firstkey == 0) {
-			whatKey = "mipop_choose_what_back";
+			whatKey = MCWB;
 		} else if (firstkey == 1) {
-			whatKey = "mipop_choose_what_home";
+			whatKey = MCWH;
 		}
 		Log.e("mijl-->", firstkey + "---------");
 		Log.e("mijl-->", whatKey + "---------");
@@ -151,12 +157,12 @@ public class JueLianUtils {
 	}
 
 	public static void switchFunction2() {
-		int firstkey = getSystemInt(mContext, "FirstKey", 0);
+		int firstkey = getSystemInt(mContext, FIRKEY, 0);
 		String whatKey = "";
 		if (firstkey == 0) {
-			whatKey = "mipop_choose_what_home";
+			whatKey = MCWH;
 		} else if (firstkey == 1) {
-			whatKey = "mipop_choose_what_back";
+			whatKey = MCWB;
 		}
 		Log.e("mijl-->", firstkey + "---------");
 		Log.e("mijl-->", whatKey + "---------");

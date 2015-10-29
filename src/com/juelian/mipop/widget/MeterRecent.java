@@ -42,6 +42,6 @@ public class MeterRecent extends MeterBase {
 
 	public void LongClick() {
 		Log.i("juelian", "recent long click");
-		JueLianUtils.switchFunction("mipop_choose_what_recl");
+		JueLianUtils.switchFunction(JueLianUtils.MCWR);
 	}
 }

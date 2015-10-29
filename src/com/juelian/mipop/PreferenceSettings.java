@@ -85,10 +85,10 @@ public class PreferenceSettings extends PreferenceActivity implements
 		mFirstKeyListPreference = (ListPreference) findPreference(KEY_FIRST_KEY_STRING);
 		mFirstKeyListPreference
 				.setSummary(mFirstKeyListPreference.getEntries()[Settings.System
-						.getInt(getContentResolver(), "FirstKey", 0)]);
+						.getInt(getContentResolver(), JueLianUtils.FIRKEY, 0)]);
 		mFirstKeyListPreference.setOnPreferenceChangeListener(this);
 		mMiPop = ((CheckBoxPreference) findPreference(KEY_SWITCH_STRING));
-		mMiPop.setChecked(Settings.System.getInt(getContentResolver(), "juelian_mipop_on",0)==1 ? true : false);
+		mMiPop.setChecked(Settings.System.getInt(getContentResolver(), "juelian_mipop_on",1)==1 ? true : false);
 		
 		mFullScreen = ((CheckBoxPreference) findPreference(KEY_FULLSCREEN_STRING));
 		if (!mSharedPreferences.getBoolean(KEY_FULLSCREEN_STRING, false)) {
@@ -165,7 +165,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 					.findIndexOfValue((String) newValue);
 			mFirstKeyListPreference.setSummary(mFirstKeyListPreference
 					.getEntries()[index]);
-			Settings.System.putInt(getContentResolver(), "FirstKey", index);
+			Settings.System.putInt(getContentResolver(), JueLianUtils.FIRKEY, index);
 			return true;
 		}
 		if (preference == mMiPopButtonAlpha) {
@@ -178,7 +178,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 					return false;
 				} else {
 					Settings.System.putInt(getContentResolver(),
-							"juelian_button_alpha", index);
+							"juelian_button_alpha_md", index);
 					String beenFormat = String
 							.format(alphaSummaryFormat, index);
 					mMiPopButtonAlpha.setSummary(beenFormat);
@@ -194,10 +194,10 @@ public class PreferenceSettings extends PreferenceActivity implements
 			int index = mBackKeyListPreference
 					.findIndexOfValue((String) newValue);
 			Settings.System.putInt(getContentResolver(),
-					"mipop_choose_what_back", index);
+					JueLianUtils.MCWB, index);
 			if (index == 5) {
 				new myAsyncTask(mBackKeyListPreference,
-						"mipop_choose_what_back").execute();
+						JueLianUtils.MCWB).execute();
 			}else {
 				mBackKeyListPreference.setSummary(mBackKeyListPreference
 						.getEntries()[index]);
@@ -209,10 +209,10 @@ public class PreferenceSettings extends PreferenceActivity implements
 			int index = mHomeKeyListPreference
 					.findIndexOfValue((String) newValue);
 			Settings.System.putInt(getContentResolver(),
-					"mipop_choose_what_home", index);
+					JueLianUtils.MCWH, index);
 			if (index == 5) {
 				new myAsyncTask(mHomeKeyListPreference,
-						"mipop_choose_what_home").execute();
+						JueLianUtils.MCWH).execute();
 			}else {
 				mHomeKeyListPreference.setSummary(mHomeKeyListPreference
 						.getEntries()[index]);
@@ -224,10 +224,10 @@ public class PreferenceSettings extends PreferenceActivity implements
 			int index = mMenuKeyListPreference
 					.findIndexOfValue((String) newValue);
 			Settings.System.putInt(getContentResolver(),
-					"mipop_choose_what_menu", index);
+					JueLianUtils.MCWM, index);
 			if (index == 5) {
 				new myAsyncTask(mMenuKeyListPreference,
-						"mipop_choose_what_menu").execute();
+						JueLianUtils.MCWM).execute();
 			}else {
 				mMenuKeyListPreference.setSummary(mMenuKeyListPreference
 						.getEntries()[index]);
@@ -239,10 +239,10 @@ public class PreferenceSettings extends PreferenceActivity implements
 			int index = mReclKeyListPreference
 					.findIndexOfValue((String) newValue);
 			Settings.System.putInt(getContentResolver(),
-					"mipop_choose_what_recl", index);
+					JueLianUtils.MCWR, index);
 			if (index == 5) {
 				new myAsyncTask(mReclKeyListPreference,
-						"mipop_choose_what_recl").execute();
+						JueLianUtils.MCWR).execute();
 			}else {
 				mReclKeyListPreference.setSummary(mReclKeyListPreference
 						.getEntries()[index]);
