@@ -19,6 +19,7 @@
         <item>7</item>
         <item>8</item>
         <item>9</item>
+        <item>10</item>
     </string-array>
     <string-array name="mi_fristkey_entries">
         <item>返回键(默认)</item>
@@ -39,5 +40,6 @@
         <item>屏幕截图</item>
         <item>启用/关闭智能分屏</item>
         <item>启用/关闭护目镜</item>
+        <item>启动单手模式</item>
     </string-array>
 </resources>

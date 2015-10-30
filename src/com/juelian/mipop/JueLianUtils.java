@@ -254,6 +254,11 @@ public class JueLianUtils {
 			localIntent1.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			mContext.startActivity(localIntent1);
 			break;
+		case 10:
+	        Intent localIntent2 = new Intent("com.powermo.smartbar.action");
+	        localIntent2.putExtra("cmd_toggle_shopm", "last");
+	        mContext.sendBroadcast(localIntent2);
+			break;
 		}
 		
 	}
