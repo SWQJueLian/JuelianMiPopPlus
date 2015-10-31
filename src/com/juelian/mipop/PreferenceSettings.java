@@ -88,7 +88,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 						.getInt(getContentResolver(), JueLianUtils.FIRKEY, 0)]);
 		mFirstKeyListPreference.setOnPreferenceChangeListener(this);
 		mMiPop = ((CheckBoxPreference) findPreference(KEY_SWITCH_STRING));
-		mMiPop.setChecked(Settings.System.getInt(getContentResolver(), "juelian_mipop_on",1)==1 ? true : false);
+		mMiPop.setChecked(Settings.System.getInt(getContentResolver(), "juelian_mipop_on",0)==1 ? true : false);
 		
 		mFullScreen = ((CheckBoxPreference) findPreference(KEY_FULLSCREEN_STRING));
 		if (!mSharedPreferences.getBoolean(KEY_FULLSCREEN_STRING, false)) {

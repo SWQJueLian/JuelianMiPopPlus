@@ -122,7 +122,7 @@ public class MiPopApplication extends Application {
 
 	public void switchMipop(){
 		int i = Settings.System.getInt(getApplicationContext()
-				.getContentResolver(), "juelian_mipop_on", 1);
+				.getContentResolver(), "juelian_mipop_on", 0);
 		if (i==0) {
 			hideMipop();
 		}else {
