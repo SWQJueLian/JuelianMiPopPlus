@@ -13,7 +13,7 @@
     <string name="alpha_waring_msg">输入的值小于60或大于255!</string>
     <string name="alpha_summary">不透明度：%1$d, 默认为255.</string>
     <string name="alpha_null_waring_msg">输入的值不能为空!</string>
-    <string name="advSettings_category_title">高级设置</string>
+    <string name="other_category_title">其他</string>
     <string name="mipop_keyback">返回键</string>
     <string name="mipop_keyhome">房子键</string>
     <string name="mipop_keymenu">菜单键</string>

@@ -64,7 +64,6 @@ public final class R {
         public static final int about_summary=0x7f080014;
         public static final int about_title=0x7f080013;
         public static final int add_freeze_message_format=0x7f080015;
-        public static final int advSettings_category_title=0x7f08000c;
         public static final int alpha_null_waring_msg=0x7f08000b;
         public static final int alpha_summary=0x7f08000a;
         public static final int alpha_waring_msg=0x7f080009;
@@ -85,6 +84,7 @@ public final class R {
         public static final int mipop_switch_title=0x7f080001;
         public static final int mipop_theme_title=0x7f080002;
         public static final int not_select_app=0x7f080019;
+        public static final int other_category_title=0x7f08000c;
         public static final int start=0x7f080016;
     }
     public static final class xml {

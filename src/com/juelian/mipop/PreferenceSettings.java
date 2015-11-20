@@ -13,11 +13,9 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
-import android.database.ContentObserver;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.os.Handler;
 import android.preference.CheckBoxPreference;
 import android.preference.EditTextPreference;
 import android.preference.ListPreference;
@@ -48,6 +46,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 	private ListPreference mMenuKeyListPreference;
 	private ListPreference mReclKeyListPreference;
 	private ListPreference mThemeListPreference;
+	private Preference mShortcutPreference;
 	private ProgressDialog mProgressDialog;
 	private List<AppInfo> mAppInfos =null;
 	private PackageManager pm;
@@ -128,6 +127,8 @@ public class PreferenceSettings extends PreferenceActivity implements
 				.setSummary(mThemeListPreference.getEntries()[Settings.System
 						.getInt(getContentResolver(), "juelian_button_theme", 0)]);
 		mThemeListPreference.setOnPreferenceChangeListener(this);
+		
+		mShortcutPreference = findPreference("shortcut");
 	}
 
 	public boolean onPreferenceTreeClick(PreferenceScreen preferenceScreen,
@@ -142,7 +143,8 @@ public class PreferenceSettings extends PreferenceActivity implements
 			} else {
 				MiPopApplication.hideMipop();
 			}*/
-		} else if (preference == mFullScreen) {
+		}
+		if (preference == mFullScreen) {
 			Log.i(TAG, "onPreferenceTreeClick preference == mFullScreen");
 			if (mFullScreen.isChecked()) {
 				Log.i(TAG, "mFullScreen checked mipop = true");
@@ -151,6 +153,27 @@ public class PreferenceSettings extends PreferenceActivity implements
 				MiPopApplication.showMipop();
 			} else {
 				mMiPop.setEnabled(true);
+			}
+		}
+		if (preference == mShortcutPreference) {
+			try {
+				Intent shortcut = new Intent("com.android.launcher.action.INSTALL_SHORTCUT");
+				//图标名
+				shortcut.putExtra(Intent.EXTRA_SHORTCUT_NAME, getResources().getString(R.string.app_name));
+				//图标资源
+				shortcut.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(getBaseContext(), R.mipmap.ic_launcher));
+				//启动的intent
+				Intent intentStartActivity = new Intent(getApplicationContext(), PreferenceSettings.class);
+				shortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, intentStartActivity);
+				//发送广播
+				sendBroadcast(shortcut);
+				Toast.makeText(PreferenceSettings.this, "发送软件图标到桌面成功!", 0).show();
+				return true;
+			} catch (Exception e) {
+				// TODO: handle exception
+				Log.d("juelian96", "send shorcut fail");
+				Toast.makeText(PreferenceSettings.this, "发送软件图标到桌面失败!", 0).show();
+				return false;
 			}
 		}
 		return super.onPreferenceTreeClick(preferenceScreen, preference);

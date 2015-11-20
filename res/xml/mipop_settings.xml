@@ -54,11 +54,13 @@
         android:key="reclkey"
         android:title="@string/mipop_keyrecl" />
 
-    <PreferenceCategory android:title="@string/advSettings_category_title" />
+    <PreferenceCategory android:title="@string/other_category_title" />
 
     <EditTextPreference
         android:key="alpha"
         android:title="@string/mipop_button_alpha_title" />
+    
+    <Preference android:title="发送软件图标到桌面" android:key="shortcut"/>
 
     <PreferenceCategory android:title="@string/about_category_title" />
 
