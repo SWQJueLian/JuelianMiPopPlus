@@ -15,7 +15,7 @@
         android:maxHeight="20.0dp"
         android:scaleType="fitCenter"
         android:layout_gravity="center|left"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/ic_launcher_new" />
     
     <TextView
         android:layout_weight="3"

@@ -45,19 +45,20 @@ public final class R {
         public static final int back_pressed=0x7f030001;
         public static final int home=0x7f030002;
         public static final int home_pressed=0x7f030003;
-        public static final int ic_launcher=0x7f030004;
-        public static final int menu=0x7f030005;
-        public static final int menu_pressed=0x7f030006;
-        public static final int mhome=0x7f030007;
-        public static final int mhomeback=0x7f030008;
-        public static final int mhomeback_pressed=0x7f030009;
-        public static final int mhomehome_pressed=0x7f03000a;
-        public static final int mhomemenu=0x7f03000b;
-        public static final int mhomemenu_pressed=0x7f03000c;
-        public static final int mhomerecent=0x7f03000d;
-        public static final int mhomerecent_pressed=0x7f03000e;
-        public static final int recent=0x7f03000f;
-        public static final int recent_pressed=0x7f030010;
+        public static final int ic_actionbar=0x7f030004;
+        public static final int ic_launcher_new=0x7f030005;
+        public static final int menu=0x7f030006;
+        public static final int menu_pressed=0x7f030007;
+        public static final int mhome=0x7f030008;
+        public static final int mhomeback=0x7f030009;
+        public static final int mhomeback_pressed=0x7f03000a;
+        public static final int mhomehome_pressed=0x7f03000b;
+        public static final int mhomemenu=0x7f03000c;
+        public static final int mhomemenu_pressed=0x7f03000d;
+        public static final int mhomerecent=0x7f03000e;
+        public static final int mhomerecent_pressed=0x7f03000f;
+        public static final int recent=0x7f030010;
+        public static final int recent_pressed=0x7f030011;
     }
     public static final class string {
         public static final int about_category_title=0x7f080012;
