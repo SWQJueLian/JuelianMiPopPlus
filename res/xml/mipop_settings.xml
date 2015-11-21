@@ -27,40 +27,44 @@
         android:summary="@string/mipop_fullscreen_summary"
         android:title="@string/mipop_fullscreen_title" />
 
-    <PreferenceCategory android:title="@string/button_longclick_category_title" />
-
-    <ListPreference
-        android:defaultValue="0"
-        android:entries="@array/mi_lc_entries"
-        android:entryValues="@array/mi_lc_values"
-        android:key="backkey"
-        android:title="@string/mipop_keyback" />
-    <ListPreference
-        android:defaultValue="0"
-        android:entries="@array/mi_lc_entries"
-        android:entryValues="@array/mi_lc_values"
-        android:key="homekey"
-        android:title="@string/mipop_keyhome" />
-    <ListPreference
-        android:defaultValue="0"
-        android:entries="@array/mi_lc_entries"
-        android:entryValues="@array/mi_lc_values"
-        android:key="menukey"
-        android:title="@string/mipop_keymenu" />
-    <ListPreference
-        android:defaultValue="0"
-        android:entries="@array/mi_lc_entries"
-        android:entryValues="@array/mi_lc_values"
-        android:key="reclkey"
-        android:title="@string/mipop_keyrecl" />
+    <PreferenceScreen
+        android:summary="@string/button_longclick_category_summ"
+        android:title="@string/button_longclick_category_title" >
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/mi_lc_entries"
+            android:entryValues="@array/mi_lc_values"
+            android:key="backkey"
+            android:title="@string/mipop_keyback" />
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/mi_lc_entries"
+            android:entryValues="@array/mi_lc_values"
+            android:key="homekey"
+            android:title="@string/mipop_keyhome" />
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/mi_lc_entries"
+            android:entryValues="@array/mi_lc_values"
+            android:key="menukey"
+            android:title="@string/mipop_keymenu" />
+        <ListPreference
+            android:defaultValue="0"
+            android:entries="@array/mi_lc_entries"
+            android:entryValues="@array/mi_lc_values"
+            android:key="reclkey"
+            android:title="@string/mipop_keyrecl" />
+    </PreferenceScreen>
 
     <PreferenceCategory android:title="@string/other_category_title" />
 
     <EditTextPreference
         android:key="alpha"
         android:title="@string/mipop_button_alpha_title" />
-    
-    <Preference android:title="发送软件图标到桌面" android:key="shortcut"/>
+
+    <Preference
+        android:key="shortcut"
+        android:title="发送软件图标到桌面" />
 
     <PreferenceCategory android:title="@string/about_category_title" />
 
