@@ -73,7 +73,6 @@ public class PreferenceSettings extends PreferenceActivity implements
 		Log.i(TAG, "onCreate()...");
 		super.onCreate(bundle);
 		addPreferencesFromResource(R.xml.mipop_settings);
-		getActionBar().setIcon(R.mipmap.ic_actionbar);
 		mProgressDialog = new ProgressDialog(PreferenceSettings.this);
 		mProgressDialog.setCancelable(false);
 		mProgressDialog.setCanceledOnTouchOutside(false);
