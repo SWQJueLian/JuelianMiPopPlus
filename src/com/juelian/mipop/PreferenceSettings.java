@@ -73,6 +73,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 		Log.i(TAG, "onCreate()...");
 		super.onCreate(bundle);
 		addPreferencesFromResource(R.xml.mipop_settings);
+		getActionBar().setIcon(R.mipmap.ic_actionbar);
 		mProgressDialog = new ProgressDialog(PreferenceSettings.this);
 		mProgressDialog.setCancelable(false);
 		mProgressDialog.setCanceledOnTouchOutside(false);
@@ -161,7 +162,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 				//图标名
 				shortcut.putExtra(Intent.EXTRA_SHORTCUT_NAME, getResources().getString(R.string.app_name));
 				//图标资源
-				shortcut.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(getBaseContext(), R.mipmap.ic_launcher));
+				shortcut.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(getBaseContext(), R.mipmap.ic_launcher_new));
 				//启动的intent
 				Intent intentStartActivity = new Intent(getApplicationContext(), PreferenceSettings.class);
 				shortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, intentStartActivity);
