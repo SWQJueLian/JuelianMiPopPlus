@@ -267,8 +267,8 @@ public class JueLianUtils {
 			rebootIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 			mContext.startActivity(rebootIntent);
 			*/
-            PowerManager pm = (PowerManager)mContext.getSystemService("power");
-            pm.reboot("");
+			PowerManager pm = (PowerManager)mContext.getSystemService("power");
+			pm.reboot("");
 			break;
 		case 12:
 			Intent shutdownIntent = new Intent("android.intent.action.ACTION_REQUEST_SHUTDOWN");
