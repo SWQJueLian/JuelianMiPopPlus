@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string-array name="mi_fristkey_values">
         <item>0</item>
         <item>1</item>
@@ -20,6 +21,8 @@
         <item>8</item>
         <item>9</item>
         <item>10</item>
+        <item>11</item>
+        <item>12</item>
     </string-array>
     <string-array name="mi_fristkey_entries">
         <item>返回键(默认)</item>
@@ -41,5 +44,8 @@
         <item>启用/关闭智能分屏</item>
         <item>启用/关闭护目镜</item>
         <item>启动单手模式</item>
+        <item>重启手机</item>
+        <item>关闭手机</item>
     </string-array>
+
 </resources>

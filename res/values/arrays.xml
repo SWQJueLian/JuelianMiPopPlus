@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+
     <string-array name="mi_fristkey_values">
         <item>0</item>
         <item>1</item>
@@ -20,6 +21,8 @@
         <item>8</item>
         <item>9</item>
         <item>10</item>
+        <item>11</item>
+        <item>12</item>
     </string-array>
     <string-array name="mi_fristkey_entries">
         <item>Back Key(default)</item>
@@ -41,5 +44,8 @@
         <item>Turn ON/OFF Smart Screen</item>
         <item>Turn ON/OFF Screen Filter</item>
         <item>Turn ON Single Hand Mode</item>
+        <item>Reboot</item>
+        <item>Power off</item>
     </string-array>
+
 </resources>

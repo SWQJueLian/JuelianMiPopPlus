@@ -19,6 +19,12 @@ import com.juelian.mipop.widget.MeterRecent;
 import com.juelian.mipop.widget.Until;
 
 public class MiPopApplication extends Application {
+	
+	static{
+		mInstance = null;
+	}
+	
+	private static MiPopApplication mInstance;
 
 	private ContentObserver mFirstKeyObserver = new ContentObserver(
 			new Handler()) {
@@ -47,6 +53,10 @@ public class MiPopApplication extends Application {
 	    	switchMipop();
 	    }
 	  };
+	  
+	public static MiPopApplication getInstance(){
+		return mInstance;
+	}
 
 	public static void hideMipop() {
 		MeterBase.MeterMap.get(MeterHome.NAME).setVisibility(View.GONE);
@@ -66,6 +76,7 @@ public class MiPopApplication extends Application {
 
 	public void onCreate() {
 		super.onCreate();
+		mInstance = this;
 		Until.initialPop(this);
 		new MeterMenu(this);
 		new MeterRecent(this);

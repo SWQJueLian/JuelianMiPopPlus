@@ -11,14 +11,17 @@ import java.util.List;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.app.ActivityManagerNative;
+import android.app.AlertDialog;
 import android.app.IActivityManager;
 import android.app.Instrumentation;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.media.AudioManager;
+import android.os.PowerManager;
 import android.os.RemoteException;
 import android.preference.PreferenceManager;
 import android.provider.Settings;
@@ -26,6 +29,7 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
+import com.juelian.mipop.api.MiPopApplication;
 import com.juelian.mipop.widget.MeterBase;
 
 public class JueLianUtils {
@@ -258,6 +262,22 @@ public class JueLianUtils {
 	        Intent localIntent2 = new Intent("com.powermo.smartbar.action");
 	        localIntent2.putExtra("cmd_toggle_shopm", "last");
 	        mContext.sendBroadcast(localIntent2);
+			break;
+		case 11:
+			/* anthor way....
+			Intent rebootIntent = new Intent(Intent.ACTION_REBOOT);
+			rebootIntent.putExtra("android.intent.extra.KEY_CONFIRM", false);
+			rebootIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			mContext.startActivity(rebootIntent);
+			*/
+            PowerManager pm = (PowerManager)mContext.getSystemService("power");
+            pm.reboot("");
+			break;
+		case 12:
+			Intent shutdownIntent = new Intent("android.intent.action.ACTION_REQUEST_SHUTDOWN");
+			shutdownIntent.putExtra("android.intent.extra.KEY_CONFIRM", true);
+			shutdownIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+			mContext.startActivity(shutdownIntent);
 			break;
 		}
 		
