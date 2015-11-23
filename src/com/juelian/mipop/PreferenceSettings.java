@@ -167,12 +167,12 @@ public class PreferenceSettings extends PreferenceActivity implements
 				shortcut.putExtra(Intent.EXTRA_SHORTCUT_INTENT, intentStartActivity);
 				//发送广播
 				sendBroadcast(shortcut);
-				Toast.makeText(PreferenceSettings.this, "发送软件图标到桌面成功!", 0).show();
+				Toast.makeText(PreferenceSettings.this, "发送软件图标到桌面成功!", Toast.LENGTH_SHORT).show();
 				return true;
 			} catch (Exception e) {
 				// TODO: handle exception
 				Log.d("juelian96", "send shorcut fail");
-				Toast.makeText(PreferenceSettings.this, "发送软件图标到桌面失败!", 0).show();
+				Toast.makeText(PreferenceSettings.this, "发送软件图标到桌面失败!", Toast.LENGTH_SHORT).show();
 				return false;
 			}
 		}
@@ -197,7 +197,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 				int index = Integer.parseInt(valueString);
 				if (index < 60 || index > 255) {
 					Toast.makeText(getApplicationContext(),
-							R.string.alpha_waring_msg, 1).show();
+							R.string.alpha_waring_msg, Toast.LENGTH_LONG).show();
 					return false;
 				} else {
 					Settings.System.putInt(getContentResolver(),
@@ -209,7 +209,7 @@ public class PreferenceSettings extends PreferenceActivity implements
 				}
 			} else {
 				Toast.makeText(getApplicationContext(),
-						R.string.alpha_null_waring_msg, 1).show();
+						R.string.alpha_null_waring_msg, Toast.LENGTH_LONG).show();
 				return false;
 			}
 		}

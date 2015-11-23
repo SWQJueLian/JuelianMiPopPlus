@@ -11,11 +11,9 @@ import java.util.List;
 import android.app.ActivityManager;
 import android.app.ActivityManager.RunningTaskInfo;
 import android.app.ActivityManagerNative;
-import android.app.AlertDialog;
 import android.app.IActivityManager;
 import android.app.Instrumentation;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -29,7 +27,6 @@ import android.util.Log;
 import android.view.KeyEvent;
 import android.widget.Toast;
 
-import com.juelian.mipop.api.MiPopApplication;
 import com.juelian.mipop.widget.MeterBase;
 
 public class JueLianUtils {
@@ -108,7 +105,7 @@ public class JueLianUtils {
 						pm.getApplicationInfo(packName, 0)).toString();
 				if (aList.contains(packName)) {
 					Toast.makeText(context,
-							"无法结束白名单中的：" + "\"" + appName + "\"", 1).show();
+							"无法结束白名单中的：" + "\"" + appName + "\"", Toast.LENGTH_LONG).show();
 					return;
 				}
 				/*
@@ -117,7 +114,7 @@ public class JueLianUtils {
 				 * Toast.makeText(context, "无法结束白名单中的：" + "\""+appName + "\"",
 				 * 1).show(); return; } }
 				 */
-				Toast.makeText(context, "已停止" + "\"" + appName + "\"", 1)
+				Toast.makeText(context, "已停止" + "\"" + appName + "\"", Toast.LENGTH_LONG)
 						.show();
 				// 新建一个实例
 				IActivityManager iActivityManager = ActivityManagerNative
@@ -217,7 +214,7 @@ public class JueLianUtils {
 			String packNameString  = sp.getString(whatKey+"_packname", "");
 			String clsNameString = sp.getString(whatKey+"_classname", "");
 			if (packNameString.isEmpty() && clsNameString.isEmpty()) {
-				Toast.makeText(mContext, R.string.not_select_app, 0).show();
+				Toast.makeText(mContext, R.string.not_select_app, Toast.LENGTH_SHORT).show();
 			}else {
 				Log.d("mijl-->", "mipop-packName:"+packNameString);
 				Log.d("mijl-->", "mipop-clsName:"+packNameString);

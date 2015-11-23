@@ -14,7 +14,6 @@ import com.juelian.mipop.widget.Until;
 public class AnimationParking {
 	public static final boolean LEFT = true;
 	public static final boolean RIGHT = false;
-	private static String TAG = "AnimationParking";
 	public static int baseX = MeterBase.baseX;
 	public static int baseY = MeterBase.baseY;
 	private static Handler handler4Parking = new Handler();
